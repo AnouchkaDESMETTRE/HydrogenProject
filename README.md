@@ -1,3 +1,5 @@
+This README documents our review of the article "Absorption and desorption of hydrogen in long metal hydride tank equipped with phase change material jacket" (Rabienataj Darzi et al., International Journal of Hydrogen Energy, April 2016) and outlines our project plan to model similar aspects of hydrogen storage.
+
 #  Review of "Absorption and desorption of hydrogen in long metal hydride tank equipped with phase change material jacket" 
 
 The article titled "**Absorption and desorption of hydrogen in long metal hydride tank equipped with phase change material jacket**" was published in the International Journal of Hydrogen Energy in **April 2016** and was authored by **A. Ali Rabienataj Darzi, H. Hassanzadeh Afrouzi, A. Moshfegh, and M. Farhadi**. We are reviewing this study to understand its findings for application in our own research or project.
@@ -18,30 +20,6 @@ The study concluded that the operating parameters and bed properties significant
 
 ---
 # Project Plan
-
-This README documents our review of the article "Absorption and desorption of hydrogen in long metal hydride tank equipped with phase change material jacket" (Rabienataj Darzi et al., International Journal of Hydrogen Energy, April 2016) and outlines our project plan to model similar aspects of hydrogen storage.
-
-**Boundary and Initial Conditions Relevant to Our Model (Concentration and Flow):**
-
-* **Hydrogen Flow:**
-    * **Inlet (z=0):** Constant supply pressure (`Pin`) for absorption, outlet pressure (`Pout`) for desorption. Specific values studied are provided.
-    * **Outlet (z=L + R2) and Walls:** Zero hydrogen flux (`ur = uz = 0`).
-
-* **Hydrogen Concentration/Density:**
-    * While a direct concentration condition isn't imposed, the inlet/outlet pressure influences the amount of hydrogen available/released, managed by sorption equations (which we will initially simplify).
-
-* **Initial Conditions:**
-    * **Absorption:** Initial metal hydride density without hydrogen (`r0 = remp`), initial hydrogen concentration low or zero. Initial gas pressure at equilibrium. Initial system temperature at 301.15 K.
-    * **Desorption:** Initial metal hydride density saturated (`r0 = rsat`), maximum hydrogen concentration. Initial gas pressure at equilibrium. Initial system temperature at 305.15 K.
-
-**Key Results Regarding Concentration and Flow (for Our Model Validation):**
-
-* **Absorption:** Higher supply pressure -> faster absorption rate -> faster saturation (H/M ratio -> 1) -> shorter charging time.
-* **Desorption:** Lower discharge pressure -> faster reaction rate -> shorter discharging time.
-* **Porosity:** Higher porosity -> faster absorption -> potentially higher final concentration (depending on conditions). For desorption, higher porosity can lead to a decrease in the H/M ratio.
-* **Spatial Profiles:** Indication of spatial variation in concentration/reaction rate along the tank during desorption (potentially similar, but inverse, for absorption).
-
-**Our Project: Hydrogen Storage Modeling**
 
 Our work will be structured in three main phases, each focusing on a critical aspect of hydrogen storage modeling, drawing inspiration from the reviewed study and considering its conditions and results.
 
