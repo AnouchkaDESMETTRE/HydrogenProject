@@ -1,14 +1,14 @@
-Cette étude a numériquement analysé les processus d'**absorption et de désorption d'hydrogène dans un long réservoir tubulaire en hydrure métallique de LaNi5 (RHT)** intégré à une **enveloppe de matériau à changement de phase (MCP) Rubitherm** pour l'alimentation en hydrogène des piles à combustible PEM.
+This study numerically investigated the hydrogen absorption and desorption processes in a long tubular LaNi5 metal hydride tank (MHT) integrated with a Rubitherm phase change material (PCM) jacket for PEM fuel cell hydrogen supply. This numerical study was carried out to address the practical aspects of hydrogen absorption and desorption processes in a long tubular LaNi5 metal hydride tank (MHT) integrated with a Rubitherm phase change material (PCM) jacket for hydrogen supplying of PEM fuel cell. The article is published in the International Journal of Hydrogen Energy.
 
-Les auteurs ont analysé l'influence de différentes **pressions d'alimentation en H2 (10, 15, 20 bar)**, de différentes **pressions de décharge (1.5, 1.75, 2 bar)** et de différentes **porosités du lit d'hydrure métallique (0.4, 0.5, 0.6)** sur les distributions de température transitoires et locales, ainsi que sur les changements temporels du **rapport hydrogène/métal (H/M)** et de la **fraction de MCP fondue** jusqu'à l'atteinte de l'équilibre. Le modèle numérique a été développé à l'aide de Fluent™ avec des fonctions définies par l'utilisateur et validé par rapport à des travaux expérimentaux existants.
+The authors analyzed the influence of different H2 supply pressures (10, 15, 20 bar), different discharge pressures (1.5, 1.75, 2 bar) and metal hydride bed porosities (0.4, 0.5 and 0.6) on transient and local temperature distributions across the H2-MHT system and PCM jacket. The time-dependent changes of hydrogen to metal (H/M) ratio and PCM melt fraction were also investigated until they reach equilibrium.
 
-Les principaux résultats incluent :
+Key findings include:
+*   It was found that system temperature, PCM melt fraction and H/M ratio reach steady state with different rates, such that systems with higher supply pressure in absorption, lower discharge pressure in desorption and higher bed porosity approach steady state faster.
+*   Up to the steady state, 64%, 79% and 91% of the initial volume of solid PCM liquefies in absorption and 67%, 83% and 95% of liquid PCM solidifies in desorption for bed porosities of 0.6, 0.5 and 0.4, respectively.
+*   The MHT is charged with hydrogen much faster under high supply pressures. Also, it is discharged much faster under lower discharge pressure.
+*   Inserting metal foam in the PCM jacket enhances the thermal conductivity, and significantly reduces the charging and discharging time.
+*   PCM melt fraction and H/M ratio reached steady state at different rates during absorption.
+*   Full discharge times during desorption varied significantly with discharge pressure.
+*   Increasing bed porosity led to faster hydrogen charging but a decrease in H/M ratio during desorption.
 
-*   Une **pression d'alimentation plus élevée** pendant l'absorption, une **pression de décharge plus faible** pendant la désorption et une **porosité du lit plus élevée** ont conduit à une **atteinte plus rapide de l'état stationnaire**.
-*   Le **RHT s'est chargé et déchargé en hydrogène beaucoup plus rapidement** sous des pressions d'alimentation plus élevées et des pressions de décharge plus faibles, respectivement.
-*   L'insertion de **mousse métallique dans l'enveloppe de MCP** a amélioré la conductivité thermique et a **réduit considérablement les temps de charge et de décharge**.
-*   La **fraction de MCP fondue** et le **rapport H/M** ont atteint l'état stationnaire à des **vitesses différentes** pendant l'absorption.
-*   Les **temps de décharge complets** pendant la désorption ont varié considérablement avec la **pression de décharge**.
-*   L'**augmentation de la porosité du lit** a entraîné une **charge en hydrogène plus rapide** mais une **diminution du rapport H/M** pendant la désorption.
-
-L'étude a conclu que les paramètres de fonctionnement et les propriétés du lit affectent considérablement les performances du système, et que **l'intégration de mousse métallique dans le MCP est une stratégie efficace pour améliorer le transfert de chaleur et réduire les temps de cycle**. Ces résultats sont cruciaux pour la conception et l'optimisation des systèmes de stockage d'hydrogène à base d'hydrures métalliques.
+The study concluded that the operating parameters and bed properties significantly affect system performance, and that integrating metal foam into the PCM is an effective strategy for improving heat transfer and reducing cycle times. The findings are crucial for the design and optimization of metal hydride-based hydrogen storage systems. This research is presented in the article "Absorption and desorption of hydrogen in long metal hydride tank equipped with phase change material jacket" published in the International Journal of Hydrogen Energy in April 2016. The DOI is 10.1016/j.ijhydene.2016.04.051.
