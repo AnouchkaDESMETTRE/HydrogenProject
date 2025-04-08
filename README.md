@@ -25,22 +25,22 @@ Our work will be structured in three main phases, each focusing on a critical as
 
 **1/ Convection-Diffusion-Reaction Modeling for Hydrogen Gas and Metal-Oxide Solid Density**
 
-* Physics of the Problem: (Detailed description, see previous version of README).
+* Physics of the Problem: ...
 
-* Partial Differential Equations (PDEs) to Solve: (Detailed description, see previous version of README).
+* Partial Differential Equations (PDEs) to Solve: ...
 
 * Boundary and Initial Conditions (Adapted from Darzi et al.):
     * Boundary Conditions:
         * At the tank inlet (x=0): We will simulate a gas concentration condition corresponding to the supply pressure (`Pin`) for absorption and the outlet pressure (`Pout`) for desorption, using a simplified relationship (e.g., ideal gas law or an approximation of the sorption isotherm).
         * At the tank outlet (x=L): Zero flux condition for gas concentration.
         * Initial conditions for the solid (zero concentration for absorption, maximum for desorption) based on Darzi et al.'s indications.
-    * Initial Conditions: (See the corresponding section derived from Darzi et al.'s article).
+    * Initial Conditions: ....
 
-* Spatial Discretization by Finite Element Method (FEM): (Detailed description, see previous version of README).
-
-* Time-Stepping: (Detailed description, see previous version of README).
-
-* Implementation (Julia, Ferrite, DifferentialEquations.jl): (Detailed description, see previous version of README).
+* Implementation in Julia:
+   *  DifferentialEquations.jl
+   * Spatial Discretization by Finite Element Method (FEM)
+   
+   * Time-Stepping: ...
 
 * Expected Types of Results:
     * Spatiotemporal profiles of hydrogen gas concentration along the tank.
@@ -49,19 +49,21 @@ Our work will be structured in three main phases, each focusing on a critical as
 
 **2/ Laminar Flow Modeling of Hydrogen Gas Through the Reactor**
 
-* Physics of the Problem: (Detailed description, see previous version of README).
+* Physics of the Problem:...
 
-* Equations to Solve: (Detailed description, see previous version of README).
+* Equations to Solve: ...
 
 * Boundary and Initial Conditions (Adapted from Darzi et al.):
     * Boundary Conditions:
         * At the tank inlet (x=0): Prescribed hydrogen gas pressure (`Pin` or `Pout`).
         * At the tank outlet (x=L): Prescribed hydrogen gas pressure (corresponding to `Pout` or `Pin`).
     * Initial Conditions: Uniform initial pressure field.
-
-* Spatial Discretization by Finite Element Method (FEM): (Detailed description, see previous version of README).
-
-* Solution Method: (Detailed description, see previous version of README).
+      
+* Implementation in Julia:
+   *  DifferentialEquations.jl
+   * Spatial Discretization by Finite Element Method (FEM)
+   
+   * Time-Stepping: ...
 
 * Expected Types of Results:
     * Pressure profile and gas velocity field along the tank for different inlet/outlet pressures (related to the values studied by Darzi et al.).
@@ -69,13 +71,13 @@ Our work will be structured in three main phases, each focusing on a critical as
 
 **3/ Combination of the Two Models (Coupling)**
 
-* Coupling Approach: (Detailed description, see previous version of README).
+* Coupling Approach: 
 
-* Coupled Iterations or Time Steps: (Detailed description, see previous version of README).
+* Coupled Iterations or Time Steps: 
 
-* Integration of Thermal Effects (Later Stage): (Detailed description, see previous version of README).
+* Integration of Thermal Effects (Later Stage):
 
-* MOF Adsorption Parameters (Future Extension): (Detailed description, see previous version of README).
+* MOF Adsorption Parameters (Future Extension): 
 
 **Expected Results of the Coupled Model:**
 
