@@ -21,10 +21,6 @@ The study concluded that the operating parameters and bed properties significant
 
 This README documents our review of the article "Absorption and desorption of hydrogen in long metal hydride tank equipped with phase change material jacket" (Rabienataj Darzi et al., International Journal of Hydrogen Energy, April 2016) and outlines our project plan to model similar aspects of hydrogen storage.
 
-**Review of the Article (Key Information for Our Project):**
-
-The study by Rabienataj Darzi et al. numerically explored the hydrogen absorption and desorption processes in a long tubular LaNi5 tank integrated with a Rubitherm phase change material (PCM) jacket. The authors analyzed the influence of H2 supply pressure (10, 15, 20 bar), discharge pressure (1.5, 1.75, 2 bar), and metal hydride bed porosity (0.4, 0.5, 0.6).
-
 **Boundary and Initial Conditions Relevant to Our Model (Concentration and Flow):**
 
 * **Hydrogen Flow:**
