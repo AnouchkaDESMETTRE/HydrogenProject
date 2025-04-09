@@ -49,16 +49,17 @@ Our work will be structured in three main phases, each focusing on a critical as
         Where:
         * `ρ_s` represents the density of hydrogen in the solid.
         * `ṁ(ρ_s, t)` is the reaction term, coupling the two equations. A simplified reaction rate law (e.g., first-order) will be used initially.
-
+          
 * Boundary and Initial Conditions (Adapted from Darzi et al.):
     * Boundary Conditions:
-        * At the tank inlet (x=0): We need to specify boundary conditions for ρ_g. Since the PDE for ρ_g is second-order, we require two boundary conditions. For a 1D domain (0 <= x <= L), we will start with either:
-            * Prescribed gas density: ρ_g(0, t) = ρ_in(t) (This could be related to Pin from Darzi et al. using an equation of state).
-            * Prescribed flux: -D_eff \* ∇ρ_g(0, t) ⋅ n = q_in(t) (Where n is the inward normal vector).
-            * A combination of both (Robin boundary condition).
-            * * **Note:** Pin and Pout are not directly used here, but ρ_in and q_in will be informed by them.
-        * At the tank outlet (x=L): Zero flux condition for gas density: -D_eff \* ∇ρ_g(L, t) ⋅ n = 0.
-        * ρ_s requires no boundary conditions because the PDE for ρ_s is first-order in time and zero-order in space. This means its evolution is determined locally by the reaction term.
+        * ρ_s requires no boundary conditions because the PDE for ρ_s is first-order in time and zero-order in space.
+        * At the tank inlet (x=0):
+            * **Initial Injection Phase (0 <= t <= t_inject):** During the initial injection period, we may use :
+                * Prescribed gas density: ρ_g(0, t) = ρ_in(t).
+                * Prescribed flux: -D_eff \* ∇ρ_g(0, t) ⋅ n = q_in(t) (representing the injection rate).
+            * **Post-Injection Phase (t > t_inject):** After the injection stops, we will apply a homogeneous Neumann condition:
+                * Zero flux: -D_eff \* ∇ρ_g(0, t) ⋅ n = 0, The zero-flux condition at the inlet (z=0) for t > t_inject reflects the scenario where the hydrogen injection is stopped after an initial period, ensuring no further mass transfer across the boundary.
+       * At the tank outlet (x=L): Zero flux condition for gas density: -D_eff \* ∇ρ_g(L, t) ⋅ n = 0
     * Initial Conditions:
         * Initial gas density: ρ_g(x, 0) = ρ_g0(x).
         * Initial solid density: ρ_s(x, 0) = ρ_s0(x) (zero for absorption, maximum for desorption, based on Darzi et al.).
