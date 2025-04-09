@@ -137,7 +137,6 @@ Our work will be structured in three main phases, each focusing on a critical as
 * Expected Types of Results:
     * Pressure, velocity, and temperature fields.
     * Flow rate as a function of pressure drop.
-    * Comparison with Darcy's law (initially).
     * Impact of porosity and permeability on flow and heat transfer.
     * Temperature distribution within the reactor.
 
