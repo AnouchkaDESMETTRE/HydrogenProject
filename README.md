@@ -85,70 +85,7 @@ Our work will be structured in three main phases, each focusing on a critical as
 
 **2/ Laminar Flow Modeling of Hydrogen Gas Through the Reactor**
 
-* Physics of the Problem:
-    * We will model the laminar flow of hydrogen gas through the porous bed. Initially, we will use Darcy's law to describe the flow. The goal is to determine the gas velocity field (`v_g`) for use in the convection-diffusion-reaction model.
 
-* Equations to Solve:
-    * **Darcy's Law for flow in porous media:**
-        ```
-        v_g = - (K / μ) ∇p
-        ```
-        where:
-        * `v_g` is the gas velocity vector.
-        * `K` is the permeability of the porous bed (a function of porosity).
-        * `μ` is the dynamic viscosity of the hydrogen gas.
-        * `∇p` is the pressure gradient.
-    * **Continuity equation for the gas (initially steady-state):**
-        ```
-        ∇ ⋅ (ρ_g v_g) = 0
-        ```
-        where:
-        * `ρ_g` is the density of the gas.
-
-* Boundary and Initial Conditions (Adapted from Darzi et al.):
-    * Boundary Conditions:
-        * At the tank inlet (x=0): Prescribed hydrogen gas pressure: p(0) = p_in (corresponding to Pin).
-        * At the tank outlet (x=L): Prescribed hydrogen gas pressure: p(L) = p_out (corresponding to Pout).
-        * If we extend to 2D/3D, we'll add no-slip boundary conditions on the walls.
-    * Initial Conditions: Uniform initial pressure field: p(x, 0) = p_0 (for transient flow calculations, which may be a later extension).
-
-* Implementation in Julia:
-    * DifferentialEquations.jl: May be used if we extend to time-dependent flow.
-    * Ferrite.jl: For spatial discretization of the pressure field using FEM.
-        * Mesh Generation: Similar to Part 1, we'll use `generate_grid` for 1D and Gmsh for 2D/3D, imported into Ferrite.jl.
-
-* Time-Stepping:
-    * For steady-state flow, we'll solve the algebraic system of equations. For transient flow (future), we'll use time-stepping methods from DifferentialEquations.jl.
-
-* Expected Types of Results:
-    * Pressure profile (p) and gas velocity field (v_g) along the tank for different inlet/outlet pressures (p_in, p_out) related to Darzi et al.'s study.
-    * Analysis of the impact of porosity (ε) on the flow rate via its effect on permeability (K), qualitatively comparing trends with Darzi et al.'s observations.
-
-* Ferrite.jl and DifferentialEquations.jl Tutorials:
-    * (Same as in Part 1)
 
 **3/ Combination of the Two Models (Coupling)**
 
-* Coupling Approach:
-    * We will couple the convection-diffusion-reaction model with the flow model. Initially, we will explore a weak coupling approach:
-        1.  Solve the flow model to obtain the gas velocity field (v_g).
-        2.  Use this v_g in the convection term of the gas density equation in the convection-diffusion-reaction model.
-        3.  The reaction term (ṁ) will depend on both ρ_g and ρ_s.
-    * We will investigate how pressure changes due to absorption/desorption affect the flow.
-
-* Coupled Iterations or Time Steps:
-    * The coupling will be performed either iteratively within each time step or sequentially between time steps. We will evaluate the stability and accuracy of both approaches.
-
-* Integration of Thermal Effects (Later Stage):
-    * We will integrate an energy equation to account for heat release/absorption during reactions and heat transfer. This will involve coupling temperature to the flow and reaction models.
-
-* MOF Adsorption Parameters (Future Extension):
-    * If we extend the model to MOFs, we will incorporate adsorption models (e.g., Langmuir) to replace the reaction kinetics used for metal hydrides.
-
-**Expected Results of the Coupled Model:**
-
-* Spatiotemporal evolution of hydrogen gas (ρ_g) and solid (ρ_s) densities, considering the flow, aiming to qualitatively reproduce trends observed by Darzi et al. regarding the impact of pressure and porosity.
-* Predictions of storage capacity and cycle times.
-* (In future stages) Impact of thermal effects and MOF adsorption parameters.
-
-This adapted README incorporates the specific information from Darzi et al.'s article and addresses the tutor's feedback.
