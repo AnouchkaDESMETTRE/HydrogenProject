@@ -90,7 +90,7 @@ Our work will be structured in three main phases, each focusing on a critical as
     * We will model the flow of hydrogen gas through the porous bed. Initially, we will consider laminar flow. We aim to determine the gas velocity field (`v_g`) for use in the convection-diffusion-reaction model.
     * Darzi et al. use a more comprehensive approach, including momentum conservation, which we will incorporate.
    
- * **Continuity Equation (Conservation of Mass):**
+    * **Continuity Equation (Conservation of Mass):**
         * From Darzi et al. (Equation 2):
             ```
             ε ∂ρ_g/∂t + ∇ ⋅ (ρ_g v_g) = ṁ
