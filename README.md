@@ -31,9 +31,9 @@ Our work will be structured in three main phases, each focusing on a critical as
 
 * Partial Differential Equations (PDEs) to Solve:
     * **For the density of the hydrogen gas (ρ_g):**
-        ```
+        $$
         ∂(ε * ρ_g)/∂t + ∇ ⋅ (-D_eff * ∇ρ_g - v_g * ρ_g) = S
-        ```
+        $$
         where:
         * `ε` is the porosity of the bed.
         * `t` is time.
