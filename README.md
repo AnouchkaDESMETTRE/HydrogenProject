@@ -79,10 +79,9 @@ Our work will be structured in three main phases, each focusing on a critical as
 
 * Ferrite.jl and DifferentialEquations.jl Tutorials:
     * Ferrite.jl:
-        * [Ferrite.jl Documentation](https://ferrite-fem.github.io/Ferrite.jl/stable/)
-        * [Ferrite.jl Examples](https://ferrite-fem.github.io/Ferrite.jl/stable/examples/)
+        * [Ferrite.jl Documentation and Examples](https://ferrite-fem.github.io/Ferrite.jl/stable/)
     * DifferentialEquations.jl:
-        * [DifferentialEquations.jl Documentation](https://docs.sciml.ai/DiffEqDocs/stable/)
+        * [DifferentialEquations.jl Documentation and Examples](https://docs.sciml.ai/DiffEqDocs/stable/)
 
 **2/ Laminar Flow Modeling of Hydrogen Gas Through the Reactor**
 
