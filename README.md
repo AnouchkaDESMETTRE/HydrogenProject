@@ -31,22 +31,24 @@ Our work will be structured in three main phases, each focusing on a critical as
 
 * Partial Differential Equations (PDEs) to Solve:
     * **For the density of the hydrogen gas (ρ_g):**
-        $$
-        ∂(ε * ρ_g)/∂t + ∇ ⋅ (-D_eff * ∇ρ_g - v_g * ρ_g) = S
-        $$
-        where:
+        ```
+        ε ∂ρ_g/∂t = D ∂²ρ_g/∂z² + u_z ∂ρ_g/∂z + ṁ(ρ_s, t)
+        ```
+        given ρ_g(t=0) = ρ_g,0 and boundary conditions.
+        Where:
         * `ε` is the porosity of the bed.
         * `t` is time.
-        * `D_eff` is the effective diffusion coefficient of hydrogen in the porous bed.
-        * `v_g` is the velocity of the gas (initially simplified or from a separate flow model).
-        * `S` is a source/sink term representing the absorption/desorption reaction.
+        * `D` is the diffusion coefficient of hydrogen in the porous bed.
+        * `u_z` is the velocity of the gas in the z-direction.
+        * `ṁ(ρ_s, t)` is a source/sink term representing the absorption/desorption reaction.
     * **For the density of hydrogen in the solid metal-oxide (ρ_s):**
         ```
-        ∂((1-ε) * ρ_s)/∂t = -S
+        (1 - ε) ∂ρ_s/∂t = ṁ(ρ_s, t)
         ```
-        where:
+        given ρ_s(t=0) = ρ_s,0 and boundary conditions.
+        Where:
         * `ρ_s` represents the density of hydrogen in the solid.
-        * `-S` is the reaction term, coupling the two equations. A simplified reaction rate law (e.g., first-order) will be used initially.
+        * `ṁ(ρ_s, t)` is the reaction term, coupling the two equations. A simplified reaction rate law (e.g., first-order) will be used initially.
 
 * Boundary and Initial Conditions (Adapted from Darzi et al.):
     * Boundary Conditions:
@@ -90,7 +92,7 @@ Our work will be structured in three main phases, each focusing on a critical as
 * Equations to Solve:
     * **Darcy's Law for flow in porous media:**
         ```
-        v_g = - (K / μ) * ∇p
+        v_g = - (K / μ) ∇p
         ```
         where:
         * `v_g` is the gas velocity vector.
@@ -99,7 +101,7 @@ Our work will be structured in three main phases, each focusing on a critical as
         * `∇p` is the pressure gradient.
     * **Continuity equation for the gas (initially steady-state):**
         ```
-        ∇ ⋅ (ρ_g * v_g) = 0
+        ∇ ⋅ (ρ_g v_g) = 0
         ```
         where:
         * `ρ_g` is the density of the gas.
@@ -132,7 +134,7 @@ Our work will be structured in three main phases, each focusing on a critical as
     * We will couple the convection-diffusion-reaction model with the flow model. Initially, we will explore a weak coupling approach:
         1.  Solve the flow model to obtain the gas velocity field (v_g).
         2.  Use this v_g in the convection term of the gas density equation in the convection-diffusion-reaction model.
-        3.  The reaction term (S) will depend on both ρ_g and ρ_s.
+        3.  The reaction term (ṁ) will depend on both ρ_g and ρ_s.
     * We will investigate how pressure changes due to absorption/desorption affect the flow.
 
 * Coupled Iterations or Time Steps:
@@ -150,9 +152,4 @@ Our work will be structured in three main phases, each focusing on a critical as
 * Predictions of storage capacity and cycle times.
 * (In future stages) Impact of thermal effects and MOF adsorption parameters.
 
-This adapted README incorporates the specific information from Darzi et al.'s article and addresses the tutor's feedback by:
-
-* Clarifying the use of Pin and Pout and the boundary conditions for ρ_g.
-* Explaining why ρ_s needs no boundary conditions.
-* Detailing mesh generation plans for 2D and 3D.
-* Providing links to relevant tutorials.
+This adapted README incorporates the specific information from Darzi et al.'s article and addresses the tutor's feedback.
