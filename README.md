@@ -56,9 +56,9 @@ Our work will be structured in three main phases, each focusing on a critical as
         * At the tank inlet (x=0):
             * **Initial Injection Phase (0 <= t <= t_inject):** During the initial injection period, we may use :
                 * Prescribed gas density: ρ_g(0, t) = ρ_in(t).
-                * Prescribed flux: -D_eff \* ∇ρ_g(0, t) ⋅ n = q_in(t) (representing the injection rate).
+                * Prescribed flux: -D \* ∇ρ_g(0, t) ⋅ n = q_in(t) (representing the injection rate).
             * **Post-Injection Phase (t > t_inject):** After the injection stops, we will apply a homogeneous Neumann condition:
-                * Zero flux: -D_eff \* ∇ρ_g(0, t) ⋅ n = 0, The zero-flux condition at the inlet (z=0) for t > t_inject reflects the scenario where the hydrogen injection is stopped after an initial period, ensuring no further mass transfer across the boundary.
+                * Zero flux: -D \* ∇ρ_g(0, t) ⋅ n = 0, The zero-flux condition at the inlet (z=0) for t > t_inject reflects the scenario where the hydrogen injection is stopped after an initial period, ensuring no further mass transfer across the boundary.
        * At the tank outlet (x=L): Zero flux condition for gas density: -D_eff \* ∇ρ_g(L, t) ⋅ n = 0
     * Initial Conditions:
         * Initial gas density: ρ_g(x, 0) = ρ_g0(x).
@@ -67,15 +67,15 @@ Our work will be structured in three main phases, each focusing on a critical as
 * Implementation in Julia:
     * DifferentialEquations.jl: For time integration of the system of ordinary differential equations (ODEs) resulting from spatial discretization.
     * Ferrite.jl: For spatial discretization using the Finite Element Method (FEM).
-        * Mesh Generation: We will start with 1D mesh generation using `generate_grid` in Ferrite.jl. For 2D and axisymmetric 3D (which we plan to explore later), we will use Gmsh or similar meshing tools to generate unstructured meshes and import them into Ferrite.jl.
+        * Mesh Generation: We will start with 1D mesh generation using `generate_grid` in Ferrite.jl. For 2D and axisymmetric 3D (which we plan to explore later), we will use Gmsh to generate unstructured meshes and import them into Ferrite.jl.
 
 * Time-Stepping:
-    * We will use time-stepping schemes from DifferentialEquations.jl. Implicit methods (e.g., BDF) are likely to be preferred for stability, especially for stiff systems arising from the reaction term.
+    * We will use time-stepping schemes from DifferentialEquations.jl. Implicit methods are likely to be preferred for stability, especially for stiff systems arising from the reaction term.
 
 * Expected Types of Results:
     * Spatiotemporal profiles of hydrogen gas density (ρ_g) along the tank.
     * Temporal evolution of the average hydrogen density in the solid (ρ_s).
-    * Qualitative comparison of the absorption/desorption rate with Darzi et al.'s results based on parameters like porosity (ε) (which will be our initial study parameter).
+    * Qualitative comparison of the absorption/desorption rate with Darzi et al.'s results based on parameters like temperature or pressure.
 
 * Ferrite.jl and DifferentialEquations.jl Tutorials:
     * Ferrite.jl:
@@ -83,7 +83,6 @@ Our work will be structured in three main phases, each focusing on a critical as
         * [Ferrite.jl Examples](https://ferrite-fem.github.io/Ferrite.jl/stable/examples/)
     * DifferentialEquations.jl:
         * [DifferentialEquations.jl Documentation](https://docs.sciml.ai/DiffEqDocs/stable/)
-        * [DifferentialEquations.jl Tutorials](https://docs.sciml.ai/DiffEqTutorials.jl/stable/)
 
 **2/ Laminar Flow Modeling of Hydrogen Gas Through the Reactor**
 
