@@ -79,13 +79,91 @@ Our work will be structured in three main phases, each focusing on a critical as
 
 * Ferrite.jl and DifferentialEquations.jl Tutorials:
     * Ferrite.jl:
-        * [Ferrite.jl Documentation and Examples](https://ferrite-fem.github.io/Ferrite.jl/stable/)
+        * [Ferrite.jl Documentation and Transient Heat Equation](https://ferrite-fem.github.io/Ferrite.jl/stable/tutorials/transient_heat_equation/)
     * DifferentialEquations.jl:
-        * [DifferentialEquations.jl Documentation and Examples](https://docs.sciml.ai/DiffEqDocs/stable/)
+        * [DifferentialEquations.jl Documentation](https://docs.sciml.ai/DiffEqDocs/stable/)
+
 
 **2/ Laminar Flow Modeling of Hydrogen Gas Through the Reactor**
 
+* Physics of the Problem:
+    * We will model the flow of hydrogen gas through the porous bed. Initially, we will consider laminar flow. We aim to determine the gas velocity field (`v_g`) for use in the convection-diffusion-reaction model.
+    * Darzi et al. use a more comprehensive approach, including momentum conservation, which we will incorporate.
+   
+ * **Continuity Equation (Conservation of Mass):**
+        * From Darzi et al. (Equation 2):
+            ```
+            ε ∂ρ_g/∂t + ∇ ⋅ (ρ_g v_g) = ṁ
+            ```
+            where:
+            * `ε` is the porosity.
+            * `ρ_g` is the gas density.
+            * `t` is time.
+            * `u_r`, `u_z` are velocity components.
+            * `ṁ` is the mass reaction rate.
+        
+    * **Momentum Equation (Conservation of Momentum):**
+        * From Darzi et al. (Equations 6 and 7):
+            ```
+            ρ_g ∂v_g/∂t + ρ_g (v_g ⋅ ∇) v_g = -∇p + μ ∇²v_g - S
+            ```
+            where:
+            * `p_g` is the gas pressure.
+            * `μ` is the viscosity.
+            * `S` represents pressure losses due to the porous medium.
+     
+    * **Energy Equation (Conservation of Energy):**
+        * From Darzi et al. (Equation 10):
+            ```
+            (ρC_p)_eff ∂T/∂t + (ε ρ_g C_{p,g} v_g ⋅ ∇) T = ∇ ⋅ (k_eff ∇T) - ṁ ((1-ε) ΔH + T (C_{p,g} - C_s))
+            ```
+            where:
+            * `T` is the temperature.
+            * `(ρC_p)_eff` is the effective volumetric heat capacity.
+            * `C_{p,g}` is the heat capacity of hydrogen gas.
+            * `ΔH` is the enthalpy of absorption/desorption.
+            * `C_s` is the heat capacity of the solid.
+            * `k_eff` is the effective thermal conductivity.
 
+* Boundary and Initial Conditions (Adapted from Darzi et al.):
+    * ...
 
-**3/ Combination of the Two Models (Coupling)**
+* Implementation in Julia:
+    * ...
 
+* Time-Stepping:
+    * ...
+
+* Expected Types of Results:
+    * Pressure, velocity, and temperature fields.
+    * Flow rate as a function of pressure drop.
+    * Comparison with Darcy's law (initially).
+    * Impact of porosity and permeability on flow and heat transfer.
+    * Temperature distribution within the reactor.
+
+* Ferrite.jl and DifferentialEquations.jl Tutorials:
+    * ...
+
+**3/  Combination of the Two Models (Coupling)**
+
+* Coupling Approach:
+    * We will explore coupling the convection-diffusion-reaction model with the flow and energy models.
+    * **One-Way Coupling (Initial):**
+        1.  Solve the flow model (including energy) to obtain the velocity field (v_g) and temperature field (T).
+        2.  Use v_g and T in the convection and reaction terms of the mass and energy conservation equations in the convection-diffusion-reaction model.
+        3.  The mass reaction rate (ṁ) depends on ρ_g, ρ_s, and T.
+    * **Two-Way Coupling (Advanced):**
+        1.  Iteratively solve all models, exchanging information (e.g., pressure and temperature changes from reaction affecting flow and heat transfer).
+        2.  Include density and energy changes from the reaction (ṁ and heat release/absorption) in the flow and energy model's mass and energy conservation equations.
+
+* Coupled Iterations or Time Steps:
+    * Sequential or iterative coupling within/between time steps.
+
+* Integration of Thermal Effects (Now Integrated):
+    * The energy equation is now a fundamental part of the flow model and will be coupled with the convection-diffusion-reaction model.
+
+**Expected Results of the Coupled Model:**
+
+* Spatiotemporal evolution of hydrogen gas (ρ_g) and solid (ρ_s) densities, temperature (T), and velocity (v_g), considering the flow and heat transfer, aiming to qualitatively reproduce trends observed by Darzi et al. regarding the impact of pressure, porosity, and temperature.
+* Predictions of storage capacity, cycle times, and temperature distributions.
+    
