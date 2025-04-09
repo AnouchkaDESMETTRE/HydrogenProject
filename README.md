@@ -59,7 +59,7 @@ Our work will be structured in three main phases, each focusing on a critical as
                 * Prescribed flux: -D \* ∇ρ_g(0, t) ⋅ n = q_in(t) (representing the injection rate).
             * **Post-Injection Phase (t > t_inject):** After the injection stops, we will apply a homogeneous Neumann condition:
                 * Zero flux: -D \* ∇ρ_g(0, t) ⋅ n = 0, The zero-flux condition at the inlet (z=0) for t > t_inject reflects the scenario where the hydrogen injection is stopped after an initial period, ensuring no further mass transfer across the boundary.
-       * At the tank outlet (x=L): Zero flux condition for gas density: -D_eff \* ∇ρ_g(L, t) ⋅ n = 0
+       * At the tank outlet (x=L): Zero flux condition for gas density: -D \* ∇ρ_g(L, t) ⋅ n = 0
     * Initial Conditions:
         * Initial gas density: ρ_g(x, 0) = ρ_g0(x).
         * Initial solid density: ρ_s(x, 0) = ρ_s0(x) (zero for absorption, maximum for desorption, based on Darzi et al.).
