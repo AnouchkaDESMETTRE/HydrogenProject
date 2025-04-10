@@ -69,9 +69,6 @@ Our work will be structured in three main phases, each focusing on a critical as
     * Ferrite.jl: For spatial discretization using the Finite Element Method (FEM).
         * Mesh Generation: We will start with 1D mesh generation using `generate_grid` in Ferrite.jl. For 2D and axisymmetric 3D (which we plan to explore later), we will use Gmsh to generate unstructured meshes and import them into Ferrite.jl.
 
-* Time-Stepping:
-    * We will use time-stepping schemes from DifferentialEquations.jl. Implicit methods are likely to be preferred for stability, especially for stiff systems arising from the reaction term.
-
 * Expected Types of Results:
     * Spatiotemporal profiles of hydrogen gas density (ρ_g) along the tank.
     * Temporal evolution of the average hydrogen density in the solid (ρ_s).
@@ -81,7 +78,7 @@ Our work will be structured in three main phases, each focusing on a critical as
     * Ferrite.jl:
         * [Ferrite.jl Documentation and Transient Heat Equation](https://ferrite-fem.github.io/Ferrite.jl/stable/tutorials/transient_heat_equation/)
     * DifferentialEquations.jl:
-        * [DifferentialEquations.jl Documentation](https://docs.sciml.ai/DiffEqDocs/stable/)
+        * [DifferentialEquations.jl Mathematical Specification of an ODE Problem](https://docs.sciml.ai/DiffEqDocs/stable/types/ode_types/#SciMLBase.ODEFunction)
 
 
 **2/ Laminar Flow Modeling of Hydrogen Gas Through the Reactor**
