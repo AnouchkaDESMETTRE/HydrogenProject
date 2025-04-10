@@ -50,7 +50,7 @@ Our work will be structured in three main phases, each focusing on a critical as
         * `ρ_s` represents the density of hydrogen in the solid.
         * `ṁ(ρ_s, t)` is the reaction term, coupling the two equations. A simplified reaction rate law (e.g., first-order) will be used initially.
           
-* Boundary and Initial Conditions (Adapted from Darzi et al.):
+* Boundary and Initial Conditions (Absorption case):
     * Boundary Conditions:
         * ρ_s requires no boundary conditions because the PDE for ρ_s is first-order in time and zero-order in space.
         * At the tank inlet (x=0):
