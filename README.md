@@ -52,7 +52,7 @@ Our work will be structured in three main phases, each focusing on a critical as
           
 * Boundary and Initial Conditions (Absorption case):
     * Boundary Conditions:
-        * ρ_s requires no boundary conditions because the PDE for ρ_s is first-order in time and zero-order in space.
+        * ρ_s requires no boundary conditions because the ODE for ρ_s is first-order in time and zero-order in space.
         * At the tank inlet (x=0):
             * **Initial Injection Phase (0 <= t <= t_inject):** During the initial injection period, we may use :
                 * Prescribed gas density: ρ_g(0, t) = ρ_in(t).
