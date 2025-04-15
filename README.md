@@ -88,26 +88,21 @@ Our work will be structured in three main phases, each focusing on a critical as
     * Darzi et al. use a more comprehensive approach, including momentum conservation, which we will incorporate.
    
     * **Continuity Equation (Conservation of Mass):**
-        * From Darzi et al. (Equation 2):
             ```
-            ε ∂ρ_g/∂t + ∇ ⋅ (ρ_g v_g) = ṁ
+            div(u) = 0
             ```
             where:
-            * `ε` is the porosity.
-            * `ρ_g` is the gas density.
-            * `t` is time.
-            * `u_r`, `u_z` are velocity components.
-            * `ṁ` is the mass reaction rate.
+            *  the unknown velocity `u(x)`.
         
     * **Momentum Equation (Conservation of Momentum):**
-        * From Darzi et al. (Equations 6 and 7):
             ```
-            ρ_g ∂v_g/∂t + ρ_g (v_g ⋅ ∇) v_g = -∇p + μ ∇²v_g - S
+            u(x) \, u'(x) = 1/Re \, u''(x) + f(x)
+
             ```
             where:
-            * `p_g` is the gas pressure.
-            * `μ` is the viscosity.
-            * `S` represents pressure losses due to the porous medium.
+            * the unknown velocity `u(x)`.
+            * the pressure gradient `f(x)`.
+            *  the Reynolds number `Re>0$`.
      
     * **Energy Equation (Conservation of Energy):**
         * From Darzi et al. (Equation 10):
