@@ -95,7 +95,7 @@ Our work will be structured in three main phases, each focusing on a critical as
 
    * **Momentum Equation (Conservation of Momentum):**
        ```
-       u(x) \, u'(x) = 1/Re \, u''(x) + f(x)
+       u(x) \frac{du}{dx} = \frac{1}{Re} \frac{d^2u}{dx^2} + f(x)
        ```
        where:
        * `u(x)` is the unknown velocity.
