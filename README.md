@@ -87,22 +87,20 @@ Our work will be structured in three main phases, each focusing on a critical as
     * We will model the flow of hydrogen gas through the porous bed. Initially, we will consider laminar flow. We aim to determine the gas velocity field (`v_g`) for use in the convection-diffusion-reaction model.
     * Darzi et al. use a more comprehensive approach, including momentum conservation, which we will incorporate.
    
-    * **Continuity Equation (Conservation of Mass):**
-            ```
-            div(u) = 0
-            ```
-            where:
-            *  the unknown velocity `u(x)`.
-        
-    * **Momentum Equation (Conservation of Momentum):**
-            ```
-            u(x) \, u'(x) = 1/Re \, u''(x) + f(x)
+   * **Continuity Equation (Conservation of Mass):**
+       ```
+        div(u) = 0
+       ```
+       where `u(x)` is the unknown velocity. In 1D, this implies a spatially constant velocity.
 
-            ```
-            where:
-            * the unknown velocity `u(x)`.
-            * the pressure gradient `f(x)`.
-            *  the Reynolds number `Re>0$`.
+   * **Momentum Equation (Conservation of Momentum):**
+       ```
+       u(x) \, u'(x) = 1/Re \, u''(x) + f(x)
+       ```
+       where:
+       * `u(x)` is the unknown velocity.
+       * `f(x)` is the pressure gradient.
+       * `Re > 0` is the Reynolds number.
      
     * **Energy Equation (Conservation of Energy):**
         * From Darzi et al. (Equation 10):
