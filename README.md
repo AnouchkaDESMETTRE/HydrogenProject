@@ -91,15 +91,15 @@ Our work will be structured in three main phases, each focusing on a critical as
        ```
         div(u) = 0
        ```
-       where `u(x)` is the unknown velocity. In 1D, this implies a spatially constant velocity.
+       where `u(z)` is the unknown velocity. In 1D, this implies a spatially constant velocity.
 
    * **Momentum Equation (Conservation of Momentum):**
        ```
-       u(x) \frac{du}{dx} = \frac{1}{Re} \frac{d^2u}{dx^2} + f(x)
+       u(z) ∂u/∂z = 1/Re ∂^2u/∂z^2 + f(z)
        ```
        where:
-       * `u(x)` is the unknown velocity.
-       * `f(x)` is the pressure gradient.
+       * `u(z)` is the unknown velocity.
+       * `f(z)` is the pressure gradient.
        * `Re > 0` is the Reynolds number.
      
     * **Energy Equation (Conservation of Energy):**
