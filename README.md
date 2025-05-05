@@ -92,7 +92,7 @@ Our work will be structured in three main phases, each focusing on a critical as
         given ρ_s(t=0) = ρ_s,0 and boundary conditions.
         Where:
         * `ρ_s` represents the density of hydrogen in the solid.
-        * `ṁ(ρ_s, t)` is the reaction term, coupling the two equations. A simplified reaction rate law (e.g., first-order) will be used initially.
+        * `ṁ(ρ_s, t)` is the reaction term, coupling the two equations see above. A simplified reaction rate law (e.g., first-order) will be used initially.
           
 * Boundary and Initial Conditions (Absorption case):
     * Boundary Conditions:
