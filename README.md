@@ -36,7 +36,6 @@ Our work will be structured in three main phases, each focusing on a critical as
         ```
         given `ρ_g(t=0) = ρ_g,0` and boundary conditions.
         ```
-  
         Where:
         
         * `ε` is the porosity of the bed. This structural property significantly impacts absorption and desorption times, as well as heat transfer. The values used in this study include 0.4, 0.5, and 0.6.
@@ -50,6 +49,7 @@ Our work will be structured in three main phases, each focusing on a critical as
         * `ṁ(ρ_s, t)` is the mass reaction rate of hydrogen. It represents the mass of hydrogen absorbed or desorbed per unit volume and time. This rate is calculated using separate kinetic equations:
 
         ```
+        
     * **For Absorption:**
         
         ṁ = C_a exp(-E_a / (RT)) ln(p_g / p_{eq,a}) (ρ_{sat} - ρ_s)
