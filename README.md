@@ -34,25 +34,19 @@ Our work will be structured in three main phases, each focusing on a critical as
         ```
         ε ∂ρ_g/∂t = D (∂²ρ_g/∂x² + ∂²ρ_g/∂z²) + u_x ∂ρ_g/∂x + u_z ∂ρ_g/∂z + ṁ(ρ_s, t)
         ```
-        given ρ_g(t=0) = ρ_g,0 and boundary conditions.
-        ```
-        Where:
-
-        * `ε`is the bed porosity of the metal hydride. This structural property significantly impacts absorption and desorption times, as well as heat transfer. Values used in the study include 0.4, 0.5, and 0.6.
-
-        * `t` is time.
-
-        * `D` is the diffusion coefficient of hydrogen in the porous bed.
-
-        * `u_z` is the velocity of the gas in the z-direction.
-
+        given `ρ_g(t=0) = ρ_g,0` and boundary conditions.
         ```
         Where:
-            * `` `ε` ``: 
-            * `` `ρ_g` ``: Density of the gas (hydrogen). This value is variable with time (`` `t` ``) and space (`` `x` ``, `` `z` ``) as the equation describes its variation. The gas is assumed to behave as an ideal gas.
-            * `` `t` ``: Time.
-            * `` `u_x` `` and `` `u_z` ``: Velocities of hydrogen in the longitudinal and radial directions. These velocities are variables and are solved using momentum equations.
-            * `` `ṁ(ρ_s, t)` ``: The mass reaction rate of hydrogen. This represents the mass of hydrogen absorbed or desorbed per unit volume and time. It is calculated using separate kinetic equations:
+
+        * `ε` is the porosity of the bed. This structural property significantly impacts absorption and desorption times, as well as heat transfer. The values used in this study include 0.4, 0.5, and 0.6.
+
+        * `ρ_g` is the density of the gas (hydrogen). Its value varies as a function of time (`t`) and space (`x`, `z`) as the equation describes its variation. The gas is assumed to behave as an ideal gas.
+
+        * `t` is time.
+
+        * `u_x` and `u_z` are the velocities of hydrogen in the longitudinal and radial directions, respectively. These velocities are variables that are obtained by solving the momentum equations.
+
+        * `ṁ(ρ_s, t)` is the mass reaction rate of hydrogen. It represents the mass of hydrogen absorbed or desorbed per unit volume and time. This rate is calculated using separate kinetic equations:
 
     * **For Absorption:**
         ```
@@ -64,19 +58,18 @@ Our work will be structured in three main phases, each focusing on a critical as
         ṁ = C_d exp(-E_d / (RT)) (p_g - p_{eq,d}) / p_{eq,d} (ρ_s - ρ_{emp})
         ```
         Where:
-            * `` `C_a` ``: Absorption rate coefficient (Value: 59.187 s⁻¹).
-            * `` `C_d` ``: Desorption rate coefficient (Value: 9.57 s⁻¹).
-            * `` `E_a` ``: Activation energy for absorption (Value: 21179.6 J/mol).
-            * `` `E_d` ``: Activation energy for desorption (Value: 16473 J/mol).
-            * `` `R` ``: Universal gas constant (Value: 8.314 J/mole K).
-            * `` `T` ``: Temperature (Variable obtained by solving the heat transfer equation - Equation 10 in Darzie's Thesis).
-            * `` `p_g` ``: Absolute pressure (Variable, see momentum equations).
-            * `` `p_{eq,a}` ``: Equilibrium pressure for absorption, calculated using the Van't Hoff relation: `` `p_{eq,a} = p_{ref} exp(A - B/T)` `` with `` `A = 10.7` ``, `` `B = 3704.6` ``, and `` `p_{ref} = 1 MPa` ``.
-            * `` `p_{eq,d}` ``: Equilibrium pressure for desorption, calculated using the Van't Hoff relation: `` `p_{eq,d} = p_{ref} exp(A - B/T)` `` with `` `A = 10.57` ``, `` `B = 3704.6` ``, and `` `p_{ref} = 1 MPa` ``.
-            * `` `ρ_{sat}` ``: Saturated bed density (Value: 7259 kg/m³).
-            * `` `ρ_{emp}` `` (r_emp): Density of the metal hydride without hydrogen (empty bed density) (Value: 7164 kg/m³).
-            * `` `ρ_s` ``: Solid bed density (Variable, its variation is given by the following equation)
-
+            * `C_a` is the absorption rate coefficient (Value: 59.187 s⁻¹).
+            * `C_d` is the desorption rate coefficient (Value: 9.57 s⁻¹).
+            * `E_a` is the activation energy for absorption (Value: 21179.6 J/mol).
+            * `E_d` is the activation energy for desorption (Value: 16473 J/mol).
+            * `R` is the universal gas constant (Value: 8.314 J/mole K).
+            * `T` is Temperature (Variable obtained by solving the heat transfer equation - Equation 10 in Darzie's Thesis).
+            * `p_g` is Absolute pressure (Variable, see momentum equations).
+            * `p_{eq,a}` is the equilibrium pressure for absorption, calculated using the Van't Hoff relation: `p_{eq,a} = p_{ref} exp(A - B/T)` with `A = 10.7`, `B = 3704.6`, and `p_{ref} = 1 MPa`.
+            * `p_{eq,d}` is the equilibrium pressure for desorption, calculated using the Van't Hoff relation: `p_{eq,d} = p_{ref} exp(A - B/T)` with `A = 10.57`, `B = 3704.6`, and `p_{ref} = 1 MPa`.
+            * `ρ_{sat}` is the saturated bed density (Value: 7259 kg/m³).
+            * `ρ_{emp}` (r_emp) is the density of the metal hydride without hydrogen (empty bed density) (Value: 7164 kg/m³).
+            * `ρ_s` is the solid bed density (Variable, its evolution is given by an additional equation).
  
 ```
     * **For the density of hydrogen in the solid metal-oxide (ρ_s):**
