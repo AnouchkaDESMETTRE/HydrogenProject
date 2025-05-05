@@ -33,9 +33,7 @@ Our work will be structured in three main phases, each focusing on a critical as
     * **For the density of the hydrogen gas (ρ_g):**
         ```
         ε ∂ρ_g/∂t = D (∂²ρ_g/∂x² + ∂²ρ_g/∂z²) + u_x ∂ρ_g/∂x + u_z ∂ρ_g/∂z + ṁ(ρ_s, t)
-        ```
-        given `ρ_g(t=0) = ρ_g,0` and boundary conditions.
-        
+        ```        
         Where:
         
         * `ε` is the porosity of the bed. This structural property significantly impacts absorption and desorption times, as well as heat transfer. The values used in this study include 0.4, 0.5, and 0.6.
@@ -89,8 +87,7 @@ Our work will be structured in three main phases, each focusing on a critical as
         ```
         (1 - ε) ∂ρ_s/∂t = ṁ(ρ_s, t)
         ```
-        given `ρ_s(t=0) = ρ_s,0` and boundary conditions.
-      
+              
         Where:
       
         * `ρ_s` represents the density of hydrogen in the solid.
