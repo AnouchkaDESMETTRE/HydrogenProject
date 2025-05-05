@@ -37,6 +37,19 @@ Our work will be structured in three main phases, each focusing on a critical as
         given `ρ_g(t=0) = ρ_g,0` and boundary conditions.
         ```
         Where:
+
+        * `ε` is the porosity of the bed.
+
+        * `ρ_g` is the density of the gas (hydrogen).
+
+        * `t` is time.
+
+        * `u_x` and `u_z` are the velocities of hydrogen in the longitudinal and radial directions.
+
+        * `ṁ(ρ_s, t)` is the mass reaction rate of hydrogen.
+```
+        
+        Where:
         
         * `ε` is the porosity of the bed. This structural property significantly impacts absorption and desorption times, as well as heat transfer. The values used in this study include 0.4, 0.5, and 0.6.
 
