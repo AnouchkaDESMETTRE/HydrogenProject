@@ -115,6 +115,7 @@ For the initial condition of the simulation, the initial hydrogen pressure is as
 Knowing the initial pressure and initial temperature, the initial density of the gaseous hydrogen `ρ_g` can then be determined using the ideal gas law :  `ρ_{g, initial} = P_{initial}/(R_{specific}xT_{initial}`, with R the specific constante of hydrogen gaz : R=4124$ J/mole K.
 
     * Boundary Conditions :
+While explicit boundary conditions for the gas phase density `ρ_g` and the solid phase density `ρ_s` are not directly listed, their boundary behavior is inherently linked to those imposed on pressure `P`, temperature `T`, and velocity components `u_x, u_z` used in solving the conservation of mass and momentum equations; however, initial boundary conditions will still be imposed to solve these initial density equations.
 
 
 * Implementation in Julia:
