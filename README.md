@@ -37,11 +37,11 @@ Our work will be structured in three main phases, each focusing on a critical as
         given ρ_g(t=0) = ρ_g,0 and boundary conditions.
         ```
         Where:
-            * `ε`: Bed porosity of the metal hydride. This structural property significantly impacts absorption and desorption times, as well as heat transfer. Values used in the study include 0.4, 0.5, and 0.6.
-            * `ρ_g`: Density of the gas (hydrogen). This value is variable with time (`t`) and space (`x`, `z`) as the equation describes its variation. The gas is assumed to behave as an ideal gas.
-            * `t`: Time.
-            * `u_x` and `u_z`: Velocities of hydrogen in the longitudinal and radial directions. These velocities are variables and are solved using momentum equations.
-            * `ṁ(ρ_s, t)`: The mass reaction rate of hydrogen. This represents the mass of hydrogen absorbed or desorbed per unit volume and time. It is calculated using separate kinetic equations:
+            * `ε` : Bed porosity of the metal hydride. This structural property significantly impacts absorption and desorption times, as well as heat transfer. Values used in the study include 0.4, 0.5, and 0.6.
+            * `ρ_g` : Density of the gas (hydrogen). This value is variable with time (`t`) and space (`x`, `z`) as the equation describes its variation. The gas is assumed to behave as an ideal gas.
+            * `t` : Time.
+            * `u_x` and `u_z` : Velocities of hydrogen in the longitudinal and radial directions. These velocities are variables and are solved using momentum equations.
+            * `ṁ(ρ_s, t)` : The mass reaction rate of hydrogen. This represents the mass of hydrogen absorbed or desorbed per unit volume and time. It is calculated using separate kinetic equations:
 
     * **For Absorption:**
         ```
