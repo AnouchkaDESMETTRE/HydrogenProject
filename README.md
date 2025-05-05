@@ -59,18 +59,28 @@ Our work will be structured in three main phases, each focusing on a critical as
         ```
         Where:
             * `C_a` is the absorption rate coefficient (Value: 59.187 s⁻¹).
+      
             * `C_d` is the desorption rate coefficient (Value: 9.57 s⁻¹).
+      
             * `E_a` is the activation energy for absorption (Value: 21179.6 J/mol).
+      
             * `E_d` is the activation energy for desorption (Value: 16473 J/mol).
+      
             * `R` is the universal gas constant (Value: 8.314 J/mole K).
+      
             * `T` is Temperature (Variable obtained by solving the heat transfer equation - Equation 10 in Darzie's Thesis).
+      
             * `p_g` is Absolute pressure (Variable, see momentum equations).
+      
             * `p_{eq,a}` is the equilibrium pressure for absorption, calculated using the Van't Hoff relation: `p_{eq,a} = p_{ref} exp(A - B/T)` with `A = 10.7`, `B = 3704.6`, and `p_{ref} = 1 MPa`.
+      
             * `p_{eq,d}` is the equilibrium pressure for desorption, calculated using the Van't Hoff relation: `p_{eq,d} = p_{ref} exp(A - B/T)` with `A = 10.57`, `B = 3704.6`, and `p_{ref} = 1 MPa`.
+      
             * `ρ_{sat}` is the saturated bed density (Value: 7259 kg/m³).
+      
             * `ρ_{emp}` (r_emp) is the density of the metal hydride without hydrogen (empty bed density) (Value: 7164 kg/m³).
+      
             * `ρ_s` is the solid bed density (Variable, its evolution is given by an additional equation).
- 
 ```
     * **For the density of hydrogen in the solid metal-oxide (ρ_s):**
         ```
