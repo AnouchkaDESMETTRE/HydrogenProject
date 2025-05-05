@@ -47,7 +47,7 @@ Our work will be structured in three main phases, each focusing on a critical as
         * `u_x` and `u_z` are the velocities of hydrogen in the longitudinal and radial directions.
 
         * `ṁ(ρ_s, t)` is the mass reaction rate of hydrogen.
-```
+        ```
         
         Where:
         
