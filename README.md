@@ -36,6 +36,23 @@ Our work will be structured in three main phases, each focusing on a critical as
         ```
         given ρ_g(t=0) = ρ_g,0 and boundary conditions.
         ```
+        given ρ_g(t=0) = ρ_g,0 and boundary conditions.
+
+        Where:
+
+        * `ε` is the porosity of the bed.
+
+        * `t` is time.
+
+        * `D` is the diffusion coefficient of hydrogen in the porous bed.
+
+        * `u_z` is the velocity of the gas in the z-direction.
+
+
+
+
+
+        
         Where:
         
             * `ε`: Bed porosity of the metal hydride. This structural property significantly impacts absorption and desorption times, as well as heat transfer. Values used in the study include 0.4, 0.5, and 0.6.
