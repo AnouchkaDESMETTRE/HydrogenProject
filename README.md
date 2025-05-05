@@ -49,7 +49,7 @@ Our work will be structured in three main phases, each focusing on a critical as
         * `ṁ(ρ_s, t)` is the mass reaction rate of hydrogen. It represents the mass of hydrogen absorbed or desorbed per unit volume and time. This rate is calculated using separate kinetic equations:
         
     * **For Absorption:**
-        
+        ```
         ṁ = C_a exp(-E_a / (RT)) ln(p_g / p_{eq,a}) (ρ_{sat} - ρ_s)
         ```
 
@@ -82,7 +82,7 @@ Our work will be structured in three main phases, each focusing on a critical as
             * `ρ_{emp}` (r_emp) is the density of the metal hydride without hydrogen (empty bed density) (Value: 7164 kg/m³).
       
             * `ρ_s` is the solid bed density (Variable, its evolution is given by an additional equation).
-```
+
     * **For the density of hydrogen in the solid metal-oxide (ρ_s):**
         ```
         (1 - ε) ∂ρ_s/∂t = ṁ(ρ_s, t)
