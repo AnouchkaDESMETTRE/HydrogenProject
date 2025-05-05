@@ -33,6 +33,8 @@ Our work will be structured in three main phases, each focusing on a critical as
     * **For the density of the hydrogen gas (ρ_g):**
         ```
         ε ∂ρ_g/∂t = D ∂²ρ_g/∂z² + u_z ∂ρ_g/∂z + ṁ(ρ_s, t)
+        $$\epsilon \frac{\partial \rho_g}{\partial t} = D \left( \frac{\partial^2 \rho_g}{\partial x^2} + \frac{\partial^2 \rho_g}{\partial z^2} \right) + u_x \frac{\partial \rho_g}{\partial x} + u_z \frac{\partial \rho_g}{\partial z} + \dot{m}(\rho_s, t)$$
+
         ```
         given ρ_g(t=0) = ρ_g,0 and boundary conditions.
         Where:
