@@ -29,16 +29,23 @@ Our work will be structured in three main phases, each focusing on a critical as
     * We will model the evolution of hydrogen gas concentration (ρ_g) within the porous bed and the concentration of hydrogen absorbed in the metal hydride tank (ρ_s). This initial model will focus on transport and reaction in a transient regime. We will start with a simplified approach, not fully coupling the temperature.
     * This model aims to capture the fundamental behavior of hydrogen absorption and desorption, including diffusion, convection, and reaction kinetics.
 
-* Partial Differential Equations (PDEs) to Solve:
+* Coupled Densities Equations:
     * **For the density of the hydrogen gas (ρ_g):**
         ```
         ε ∂ρ_g/∂t = D (∂²ρ_g/∂x² + ∂²ρ_g/∂z²) + u_x ∂ρ_g/∂x + u_z ∂ρ_g/∂z + ṁ(ρ_s, t)
-        ```        
-        Where:
+        ```
+  * **For the density of hydrogen in the solid metal-oxide `(ρ_s)`:**
+        ```
+        (1 - ε) ∂ρ_s/∂t = ṁ(ρ_s, t)
+        ```
         
-        * `ε` is the porosity of the bed. This structural property significantly impacts absorption and desorption times, as well as heat transfer. The values used in this study include 0.4, 0.5, and 0.6.
+        Where:
 
         * `ρ_g` is the density of the gas (hydrogen). Its value varies as a function of time (`t`) and space (`x`, `z`) as the equation describes its variation. The gas is assumed to behave as an ideal gas.
+    
+        * `ρ_s` represents the density of hydrogen in the solid,  it also varies as a function of time (`t`) and space (`x`, `z`).
+
+        * `ε` is the porosity of the bed. This structural property significantly impacts absorption and desorption times, as well as heat transfer. The values used in this study include 0.4, 0.5, and 0.6.
 
         * `t` is time.
 
@@ -81,19 +88,10 @@ Our work will be structured in three main phases, each focusing on a critical as
         * `ρ_{emp}` (r_emp) is the density of the metal hydride without hydrogen (empty bed density) (Value: 7164 kg/m³).
       
         * `ρ_s` is the solid bed density (Variable, its evolution is given by an additional equation).
-
-
-    * **For the density of hydrogen in the solid metal-oxide `(ρ_s)`:**
-        ```
-        (1 - ε) ∂ρ_s/∂t = ṁ(ρ_s, t)
-        ```
-              
-        Where:
       
-        * `ρ_s` represents the density of hydrogen in the solid.
+But a simplified reaction rate law (e.g., first-order) will be used initially.
+
       
-        * `ṁ(ρ_s, t)` is the reaction term, coupling the two equations see above. A simplified reaction rate law (e.g., first-order) will be used initially.
-          
 * Initial and Boundary Conditions:
     * Initial Conditions :
          * Initial Solid Density `ρ_s(t=0)`:
