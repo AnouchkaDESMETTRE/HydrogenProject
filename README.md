@@ -57,6 +57,7 @@ Our work will be structured in three main phases, each focusing on a critical as
         ```
         ṁ = C_d exp(-E_d / (RT)) (p_g - p_{eq,d}) / p_{eq,d} (ρ_s - ρ_{emp})
         ```
+        
         Where:
       
             * `C_a` is the absorption rate coefficient (Value: 59.187 s⁻¹).
