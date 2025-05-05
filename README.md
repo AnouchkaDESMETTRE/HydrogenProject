@@ -102,10 +102,10 @@ Our work will be structured in three main phases, each focusing on a critical as
          * Initial Solid Density `ρ_s(t=0)`:
              * Absorption: Initial solid density is equal to the density of the metal hydride bed without hydrogen `ρ_{emp}`
              * Desorption: Initial solid density is equal to the saturated density of the metal hydride bed  `ρ_{sat}`.
-    * Initial Temperature `T(t=0)`:
+         * Initial Temperature `T(t=0)`:
              * Absorption: Initial temperature of the entire system (PCM and MHT tank) is set to 301.15 K.
              * Desorption: Initial temperature of the entire system is set to 305.15 K.
-* Initial Hydrogen Pressure `P(t=0)`: The initial hydrogen pressure is assumed to be equal to the equilibrium pressure at the initial temperature of the system. This equilibrium pressure is calculated using the Van't Hoff equation:
+         * Initial Hydrogen Pressure `P(t=0)`: The initial hydrogen pressure is assumed to be equal to the equilibrium pressure at the initial temperature of the system. This equilibrium pressure is calculated using the Van't Hoff equation:
     ```
     Ln(P_{eq}/P_{ref}) = A - B/T
     ```
@@ -115,9 +115,12 @@ Where:
 * `T`: Equilibrium temperature between hydrogen and the MHT.
 * `A, B`: Constants specific to the absorption: A = 10.7 et B = 3704.6 - desorption: A = 10.57 et B = 3704.6 process.
 
-For the initial condition of the simulation, the initial hydrogen pressure is assumed to be the equilibrium pressure at the initial system temperature ($T(t=0)$). We use the Van't Hoff equation with `T = T_{0}` to calculate this initial pressure `P_{initial} = P_{eq}(T_{initial})`.
+For the initial condition of the simulation, the initial hydrogen pressure is assumed to be the equilibrium pressure at the initial system temperature `T (t=0)`. We use the Van't Hoff equation with `T = T_{0}` to calculate this initial pressure `P_{initial} = P_{eq}(T_{initial})`.
 
 Knowing the initial pressure and initial temperature, the initial density of the gaseous hydrogen `ρ_g` can then be determined using the ideal gas law :  `ρ_{g, initial} = P_{initial}/(R_{specific}xT_{initial}`, with R the specific constante of hydrogen gaz : R=4124$ J/mole K.
+
+    * Boundary Conditions :
+
 
 * Implementation in Julia:
     * DifferentialEquations.jl: For time integration of the system of ordinary differential equations (ODEs) resulting from spatial discretization.
