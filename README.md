@@ -97,24 +97,34 @@ Our work will be structured in three main phases, each focusing on a critical as
       
         * `ṁ(ρ_s, t)` is the reaction term, coupling the two equations see above. A simplified reaction rate law (e.g., first-order) will be used initially.
           
-* Boundary and Initial Conditions (Absorption case):
-    * Boundary Conditions:
-        * ρ_s requires no boundary conditions because the ODE for ρ_s is first-order in time and zero-order in space.
-        * At the tank inlet (x=0):
-            * **Initial Injection Phase (0 <= t <= t_inject):** During the initial injection period, we may use :
-                * Prescribed gas density: ρ_g(0, t) = ρ_in(t).
-                * Prescribed flux: -D \* ∇ρ_g(0, t) ⋅ n = q_in(t) (representing the injection rate).
-            * **Post-Injection Phase (t > t_inject):** After the injection stops, we will apply a homogeneous Neumann condition:
-                * Zero flux: -D \* ∇ρ_g(0, t) ⋅ n = 0, The zero-flux condition at the inlet (z=0) for t > t_inject reflects the scenario where the hydrogen injection is stopped after an initial period, ensuring no further mass transfer across the boundary.
-       * At the tank outlet (x=L): Zero flux condition for gas density: -D \* ∇ρ_g(L, t) ⋅ n = 0
-    * Initial Conditions:
-        * Initial gas density: ρ_g(x, 0) = ρ_g0(x).
-        * Initial solid density: ρ_s(x, 0) = ρ_s0(x) (zero for absorption, maximum for desorption, based on Darzi et al.).
+* Initial and Boundary Conditions:
+    * Initial Conditions :
+         * Initial Solid Density `ρ_s(t=0)`:
+             * Absorption: Initial solid density is equal to the density of the metal hydride bed without hydrogen `ρ_{emp}`
+             * Desorption: Initial solid density is equal to the saturated density of the metal hydride bed  `ρ_{sat}`.
+    * Initial Temperature `T(t=0)`:
+             * Absorption: Initial temperature of the entire system (PCM and MHT tank) is set to 301.15 K.
+             * Desorption: Initial temperature of the entire system is set to 305.15 K.
+* Initial Hydrogen Pressure `P(t=0)`: The initial hydrogen pressure is assumed to be equal to the equilibrium pressure at the initial temperature of the system. This equilibrium pressure is calculated using the Van't Hoff equation:
+    ```
+    Ln(P_{eq}/P_{ref}) = A - B/T
+    ```
+Where:
+* `P_{eq}`: Equilibrium pressure of the MHT.
+* `P_{ref}`: Reference pressure (1 MPa).
+* `T`: Equilibrium temperature between hydrogen and the MHT.
+* `A, B`: Constants specific to the absorption: A = 10.7 et B = 3704.6 - desorption: A = 10.57 et B = 3704.6 process.
+
+For the initial condition of the simulation, the initial hydrogen pressure is assumed to be the equilibrium pressure at the initial system temperature ($T(t=0)$). We use the Van't Hoff equation with `T = T_{0}` to calculate this initial pressure `P_{initial} = P_{eq}(T_{initial})`.
+
+Knowing the initial pressure and initial temperature, the initial density of the gaseous hydrogen `ρ_g` can then be determined using the ideal gas law :  `ρ_{g, initial} = P_{initial}/(R_{specific}xT_{initial}`, with R the specific constante of hydrogen gaz : R=4124$ J/mole K.
 
 * Implementation in Julia:
     * DifferentialEquations.jl: For time integration of the system of ordinary differential equations (ODEs) resulting from spatial discretization.
     * Ferrite.jl: For spatial discretization using the Finite Element Method (FEM).
         * Mesh Generation: We will start with 1D mesh generation using `generate_grid` in Ferrite.jl. For 2D and axisymmetric 3D (which we plan to explore later), we will use Gmsh to generate unstructured meshes and import them into Ferrite.jl.
+   * Boundary Conditions:
+
 
 * Expected Types of Results:
     * Spatiotemporal profiles of hydrogen gas density (ρ_g) along the tank.
