@@ -85,13 +85,16 @@ Our work will be structured in three main phases, each focusing on a critical as
         * `ρ_s` is the solid bed density (Variable, its evolution is given by an additional equation).
 
 
-    * **For the density of hydrogen in the solid metal-oxide (ρ_s):**
+    * **For the density of hydrogen in the solid metal-oxide `(ρ_s)`:**
         ```
         (1 - ε) ∂ρ_s/∂t = ṁ(ρ_s, t)
         ```
-        given ρ_s(t=0) = ρ_s,0 and boundary conditions.
+        given `ρ_s(t=0) = ρ_s,0` and boundary conditions.
+      
         Where:
+      
         * `ρ_s` represents the density of hydrogen in the solid.
+      
         * `ṁ(ρ_s, t)` is the reaction term, coupling the two equations see above. A simplified reaction rate law (e.g., first-order) will be used initially.
           
 * Boundary and Initial Conditions (Absorption case):
