@@ -35,6 +35,7 @@ Our work will be structured in three main phases, each focusing on a critical as
         ε ∂ρ_g/∂t = D (∂²ρ_g/∂x² + ∂²ρ_g/∂z²) + u_x ∂ρ_g/∂x + u_z ∂ρ_g/∂z + ṁ(ρ_s, t)
         ```
   * **For the density of hydrogen in the solid metal-oxide `(ρ_s)`:**
+  
         ```
         (1 - ε) ∂ρ_s/∂t = ṁ(ρ_s, t)
         ```
