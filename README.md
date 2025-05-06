@@ -81,9 +81,7 @@ Our work will be structured in three main phases, each focusing on a critical as
         * `p_g` is Absolute pressure (Variable, see momentum equations).
       
         * `p_{eq,a}` is the equilibrium pressure for absorption and `p_{eq,d}`for desorption, calculated using the Van't Hoff relation: `p_{eq} = p_{ref} exp(A - B/T)` with `A = 10.7`, `B = 3704.6`, and `p_{ref} = 1 MPa` for `p_{eq,a}` and `A = 10.57`, `B = 3704.6`, and `p_{ref} = 1 MPa` for `p_{eq,d}`.
-      
-        * , calculated using the Van't Hoff relation: 
-      
+            
         * `ρ_{sat}` is the saturated bed density (Value: 7259 kg/m³).
       
         * `ρ_{emp}` (r_emp) is the density of the metal hydride without hydrogen (empty bed density) (Value: 7164 kg/m³).
@@ -122,9 +120,9 @@ While explicit boundary conditions for the gas phase density `ρ_g` and the soli
 Initially, we will assume that `ρ_s` is spatially independent. This is a simplification, as `ρ_s` actually depends on the mass reaction rate `ṁ`, which in turn is a function of temperature and pressure – both of which vary spatially. However, our initial focus will be solely on the first two density equations, employing a simplified form of the mass reaction rate. Consequently, we choose to impose a non-homogeneous Dirichlet boundary condition on `ρ_g` at the left inlet boundary for hydrogen. This absorption case is the first scenario we are testing.
 
 * Implementation in Julia:
-    * DifferentialEquations.jl: For time integration of the system of ordinary differential equations (ODEs) resulting from spatial discretization.
     * Ferrite.jl: For spatial discretization using the Finite Element Method (FEM).
         * Mesh Generation: We will start with 1D mesh generation using `generate_grid` in Ferrite.jl. For 2D and axisymmetric 3D (which we plan to explore later), we will use Gmsh to generate unstructured meshes and import them into Ferrite.jl.
+    * DifferentialEquations.jl: For time integration of the system of ordinary differential equations (ODEs) resulting from spatial discretization.
 
 * Expected Types of Results:
     * Spatiotemporal profiles of hydrogen gas density (ρ_g) along the tank.
