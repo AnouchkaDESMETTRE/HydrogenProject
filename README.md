@@ -38,9 +38,9 @@ Our work will be structured in three main phases, each focusing on a critical as
         ```
         (1 - ε) ∂ρ_s/∂t = ṁ(ρ_s, t)
         ```
-        ```
+        
         Where:
-
+```
         * `ρ_g` is the density of the gas (hydrogen). Its value varies as a function of time (`t`) and space (`x`, `z`) as the equation describes its variation. The gas is assumed to behave as an ideal gas.
     
         * `ρ_s` represents the density of hydrogen in the solid,  it also varies as a function of time (`t`) and space (`x`, `z`).
@@ -52,7 +52,7 @@ Our work will be structured in three main phases, each focusing on a critical as
         * `u_x` and `u_z` are the velocities of hydrogen in the longitudinal and radial directions, respectively. These velocities are variables that are obtained by solving the momentum equations.
 
         * `ṁ(ρ_s, t)` is the mass reaction rate of hydrogen. It represents the mass of hydrogen absorbed or desorbed per unit volume and time. This rate is calculated using separate kinetic equations:
- 
+``` 
         
     * **For Absorption:**
         ```
