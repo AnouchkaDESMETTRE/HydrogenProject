@@ -120,9 +120,42 @@ While explicit boundary conditions for the gas phase density `ρ_g` and the soli
 Initially, we will assume that `ρ_s` is spatially independent. This is a simplification, as `ρ_s` actually depends on the mass reaction rate `ṁ`, which in turn is a function of temperature and pressure – both of which vary spatially. However, our initial focus will be solely on the first two density equations, employing a simplified form of the mass reaction rate. Consequently, we choose to impose a non-homogeneous Dirichlet boundary condition on `ρ_g` at the left inlet boundary for hydrogen. This absorption case is the first scenario we are testing.
 
 * Implementation in Julia:
-    * Ferrite.jl: For spatial discretization using the Finite Element Method (FEM).
-        * Mesh Generation: We will start with 1D mesh generation using `generate_grid` in Ferrite.jl. For 2D and axisymmetric 3D (which we plan to explore later), we will use Gmsh to generate unstructured meshes and import them into Ferrite.jl.
-    * DifferentialEquations.jl: For time integration of the system of ordinary differential equations (ODEs) resulting from spatial discretization.
+    * **Spatial Discretization (Finite Element Method - FEM)**
+The spatial discretization of the domain is achieved using the Ferrite.jl library and the Finite Element Method (FEM). The main steps involved are:
+
+1.  **Mesh Generation:** While the provided code doesn't explicitly show mesh generation, it utilizes a `grid` object assumed to be created beforehand. Ferrite.jl can generate simple meshes (like 1D using `generate_grid`). For more complex 2D or axisymmetric 3D geometries (intended for later exploration), external tools like Gmsh are used to generate unstructured meshes, which are then imported into Ferrite.jl.
+
+2.  **Definition of Finite Element Spaces:** For each variable in the problem ($\rho_s$ represented by `:u1` and $\rho_g$ represented by `:u2`), a finite element space is defined using Lagrange elements (`Lagrange{RefQuadrilateral, degree}()`). The `degree` parameter specifies the polynomial order of the basis functions used for interpolation within each element (here, `degree = 1` for linear elements).
+
+3.  **Quadrature Rules:** For the numerical integration of the weak forms of the equations over each element, quadrature rules (`QuadratureRule{RefQuadrilateral}(2*degree+1)`) are defined. The order of the quadrature rule is chosen based on the degree of the polynomials to be integrated to ensure exact or sufficiently accurate integration.
+
+4.  **CellValues:** The `CellValues` objects (`cellvalues_u1` and `cellvalues_u2`) are created for each finite element space and quadrature rule. These objects efficiently compute the values of the basis functions and their derivatives (gradients) at the quadrature points within each cell of the mesh.
+
+5.  **DofHandler (Degrees of Freedom Management):** The `DofHandler` (`dh`) is responsible for associating the degrees of freedom (DOFs) with the nodes of the mesh for each variable. It assigns a unique global index to each DOF, enabling the construction of global solution vectors.
+
+6.  **Assembly of Matrices:** The functions `assemble_mass_matrix` and `assemble_stiffness_matrix` iterate over each cell of the mesh and contribute to the construction of the global mass matrix (`M`) and stiffness matrix (`K`). They utilize the values of the basis functions and their gradients (computed via `CellValues` at the quadrature points), as well as the determinant of the Jacobian (`getdetJdV`), to perform numerical integration over each element. The mass matrix is primarily associated with the time derivative terms, while the stiffness matrix is associated with the spatial terms (although in the code, its role appears more related to coupling).
+
+7.  **Boundary Conditions:** Dirichlet boundary conditions are applied using a `ConstraintHandler` (`ch`). Facet sets (boundaries) where the conditions are imposed are defined, and the boundary values are specified (here for `u2` on the "left" boundary). These conditions are then applied to the solution vector during the time integration.
+
+    * **Numerical Time Integration**
+    
+The numerical time integration of the system of ordinary differential equations (ODEs) resulting from the spatial discretization is performed using the DifferentialEquations.jl library. The main steps are:
+
+1.  **Definition of the Right-Hand Side (RHS) Function:** The function `rhs!(du, u, p, t)` defines the system of ODEs. It takes as input the time derivatives vector (`du`), the current solution vector (`u`), the problem parameters (`p`), and the current time (`t`). Within this function, boundary conditions are applied, and the time derivatives are computed based on the current solution and the spatial matrices (`K`). The coupling between the variables `u1` and `u2` is also implemented directly within this function.
+
+2.  **Definition of Initial Conditions:** A vector `uinit` is created and initialized with the initial conditions for all variables across the entire mesh using the `setup_initial_conditions!` function.
+
+3.  **Definition of the Time Span:** The time interval of the simulation (`tspan`) and the final time (`Tend`) are specified.
+
+4.  **Definition of the ODE Problem:** an `ODEProblem` object is created by providing the RHS function (`rhs`), the initial conditions (`uinit`), the time span (`tspan`), and the problem parameters (`p`).
+
+5.  **Choice of Time Stepper:** A time integration solver is chosen to integrate the system of ODEs. In the code, `Rodas5P` is used, which is an implicit solver suitable for stiff problems.
+
+6.  **Solving the Problem:** The `solve` function (or initializing an integrator with `init` and iterating via `intervals`) is used to perform the time integration and obtain the solution `sol` (or the integrator `integrator`).
+
+7.  **Post-processing and Visualization:** The solution is then processed and visualized, for example by writing the results to VTK files for visualization with Paraview.
+
+This provides a clear explanation of how spatial discretization using FEM and numerical time integration are implemented in your code for your README.
 
 * Expected Types of Results:
     * Spatiotemporal profiles of hydrogen gas density (ρ_g) along the tank.
