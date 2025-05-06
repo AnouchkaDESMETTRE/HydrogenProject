@@ -35,9 +35,9 @@ Our work will be structured in three main phases, each focusing on a critical as
         ε ∂ρ_g/∂t = D (∂²ρ_g/∂x² + ∂²ρ_g/∂z²) + u_x ∂ρ_g/∂x + u_z ∂ρ_g/∂z + ṁ(ρ_s, t)
         ```
   * **For the density of hydrogen in the solid metal-oxide `(ρ_s)`:**
-        ``
+        ```
         (1 - ε) ∂ρ_s/∂t = ṁ(ρ_s, t)
-        ``
+        ```
         
         Where:
 
@@ -52,6 +52,7 @@ Our work will be structured in three main phases, each focusing on a critical as
         * `u_x` and `u_z` are the velocities of hydrogen in the longitudinal and radial directions, respectively. These velocities are variables that are obtained by solving the momentum equations.
 
         * `ṁ(ρ_s, t)` is the mass reaction rate of hydrogen. It represents the mass of hydrogen absorbed or desorbed per unit volume and time. This rate is calculated using separate kinetic equations:
+ 
         
     * **For Absorption:**
         ```
