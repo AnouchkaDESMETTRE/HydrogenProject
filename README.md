@@ -80,9 +80,9 @@ Our work will be structured in three main phases, each focusing on a critical as
    
         * `p_g` is Absolute pressure (Variable, see momentum equations).
       
-        * `p_{eq,a}` is the equilibrium pressure for absorption, calculated using the Van't Hoff relation: `p_{eq,a} = p_{ref} exp(A - B/T)` with `A = 10.7`, `B = 3704.6`, and `p_{ref} = 1 MPa`.
+        * `p_{eq,a}` is the equilibrium pressure for absorption and `p_{eq,d}`for desorption, calculated using the Van't Hoff relation: `p_{eq} = p_{ref} exp(A - B/T)` with `A = 10.7`, `B = 3704.6`, and `p_{ref} = 1 MPa` for `p_{eq,a}` and `A = 10.57`, `B = 3704.6`, and `p_{ref} = 1 MPa` for `p_{eq,d}`.
       
-        * `p_{eq,d}` is the equilibrium pressure for desorption, calculated using the Van't Hoff relation: `p_{eq,d} = p_{ref} exp(A - B/T)` with `A = 10.57`, `B = 3704.6`, and `p_{ref} = 1 MPa`.
+        * , calculated using the Van't Hoff relation: 
       
         * `ρ_{sat}` is the saturated bed density (Value: 7259 kg/m³).
       
