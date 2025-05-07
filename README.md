@@ -187,14 +187,14 @@ We will model the flow of hydrogen gas through the porous bed. Initially, we wil
       ```
 
    Where:
-       * `ux` and `uz` are the unknown velocity components in the x and z directions, respectively.
-       * `ρg` is the density of the gas phase, we will use the value of  the initial density of the gaseous hydrogen (see Boundary Conditions of section 1)
-       * `t` is time.
-       * `x` and `z` are the spatial coordinates.
-       * `p` is the unkown pressure.
-       * `μ` is the dynamic viscosity of the gas phase, `μ = 8.4e-6` kg/(m s)).
-       * `Sx` and `Sz` representing the pressure loss in the bed due to viscous dissipation, `Si` in each direction is calculated by: `Si= ui(mu/K)`
-       `K` denotes the permeability of the porous bed, with `K = 10^{-9} \, m^2`.
+   * `ux` and `uz` are the unknown velocity components in the x and z directions, respectively.
+   * `ρg` is the density of the gas phase, we will use the value of  the initial density of the gaseous hydrogen (see Boundary Conditions of section 1)
+   * `t` is time.
+   * `x` and `z` are the spatial coordinates.
+   * `p` is the unkown pressure.
+   * `μ` is the dynamic viscosity of the gas phase, `μ = 8.4e-6` kg/(m s)).
+   * `Sx` and `Sz` representing the pressure loss in the bed due to viscous dissipation, `Si` in each direction is calculated by: `Si= ui(mu/K)`
+     `K` denotes the permeability of the porous bed, with `K = 10^{-9} \, m^2`.
    
 
 * Boundary and Initial Conditions (Adapted from Darzi et al.):
@@ -204,21 +204,21 @@ We will model the flow of hydrogen gas through the porous bed. Initially, we wil
              * Absorption: Initial velocity `ux` and `uz` of the entire system  is set to 0 m/s.
 
     * Boundary Conditions
-         * Hydrogen Inlet ($z = -L_{in}$, $0 \leq x \leq R_{in}$):
+         * Hydrogen Inlet (`z = -L_{in}`, `0 \leq x \leq R_{in}`):
              * Pressure is defined as the supply pressure ($P_{in}$) - 10, 15, and 20 bar - for absorption or the discharge pressure ($P_{out}$) - 1.5, 1.75, and 2 bar - for desorption.
 
          * No Hydrogen Flux/Adiabatic Boundaries:
-             * *Vertical Wall ($z = 0$, $R_{in} \leq x \leq R$)*
-                   * Hydrogen velocities are zero: `$u_x = 0, u_z = 0$`.
+             * *Vertical Wall (`z = 0`, `R_{in} \leq x \leq R`)*
+                   * Hydrogen velocities are zero: `u_x = 0, u_z = 0`.
                    * No-slip condition at a solid, impermeable wall.
-         * *Horizontal Wall ($x = R_{in}$, $-L_{in} \leq z \leq 0$ and $x = R$, $0 \leq z \leq L$):*
-             * Hydrogen velocities are zero: `$u_x = 0, u_z = 0$`.
+         * *Horizontal Wall (`x = R_{in}`, `-L_{in} \leq z \leq 0` and `x = R`, `0 \leq z \leq L`):*
+             * Hydrogen velocities are zero: `u_x = 0, u_z = 0`.
              * No-slip condition at solid, impermeable walls.
-         * *Outlet ($z = L$, $0 \leq x \leq R$):*
-              * Hydrogen velocities are zero: `$u_x = 0, u_z = 0$`.
+         * *Outlet (`z = L`, `0 \leq x \leq R`):*
+              * Hydrogen velocities are zero: `u_x = 0, u_z = 0`.
               * Assuming no flow out of the defined domain at this boundary for this initial Navier-Stokes solve.
-         * *Axis ($x = 0$, $-L_{in} \leq z \leq L$)*
-              * `$u_x = 0$`, `$\frac{\partial u_z}{\partial x} = 0$`.
+         * *Axis (`x = 0`, `-L_{in} \leq z \leq L`)*
+              * `u_x = 0`, `\frac{\partial u_z}{\partial x} = 0`.
               * Symmetry condition representing the axis of the original cylindrical geometry, enforcing no flow across and symmetric tangential velocity.  
 
 * Implementation in Julia:
