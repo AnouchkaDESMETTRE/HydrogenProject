@@ -187,14 +187,14 @@ We will model the flow of hydrogen gas through the porous bed. Initially, we wil
       ```
 
    Where:
-         * `ux` and `uz` are the unknown velocity components in the x and z directions, respectively.
-         * `ρg` is the density of the gas phase, we will use the value of  the initial density of the gaseous hydrogen (see Boundary Conditions of section 1)
-         * `t` is time.
-         * `x` and `z` are the spatial coordinates.
-         * `p` is the unkown pressure.
-         * `μ` is the dynamic viscosity of the gas phase, `μ = 8.4e-6` kg/(m s)).
-         * `Sx` and `Sz` representing the pressure loss in the bed due to viscous dissipation, `Si` in each direction is calculated by: `Si= ui(mu/K)`
-          `K` denotes the permeability of the porous bed, with `K = 10^{-9} \, m^2`.
+       * `ux` and `uz` are the unknown velocity components in the x and z directions, respectively.
+       * `ρg` is the density of the gas phase, we will use the value of  the initial density of the gaseous hydrogen (see Boundary Conditions of section 1)
+       * `t` is time.
+       * `x` and `z` are the spatial coordinates.
+       * `p` is the unkown pressure.
+       * `μ` is the dynamic viscosity of the gas phase, `μ = 8.4e-6` kg/(m s)).
+       * `Sx` and `Sz` representing the pressure loss in the bed due to viscous dissipation, `Si` in each direction is calculated by: `Si= ui(mu/K)`
+       `K` denotes the permeability of the porous bed, with `K = 10^{-9} \, m^2`.
    
 
 * Boundary and Initial Conditions (Adapted from Darzi et al.):
