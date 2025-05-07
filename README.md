@@ -23,7 +23,7 @@ The study concluded that the operating parameters and bed properties significant
 
 Our work will be structured in three main phases, each focusing on a critical aspect of hydrogen storage modeling, drawing inspiration from the reviewed study and considering its conditions and results.
 
-**1/ Convection-Diffusion-Reaction Modeling for Hydrogen Gas and Metal-Oxide Solid Density**
+ ## 1- Convection-Diffusion-Reaction Modeling for Hydrogen Gas and Metal-Oxide Solid Density
 
 * Physics of the Problem:
     * We will model the evolution of hydrogen gas concentration (ρ_g) within the porous bed and the concentration of hydrogen absorbed in the metal hydride tank (ρ_s). This initial model will focus on transport and reaction in a transient regime. We will start with a simplified approach, not fully coupling the temperature.
@@ -151,8 +151,8 @@ The numerical time integration of the system of ordinary differential equations 
 * Expected Types of Results:
 The solution is then processed and visualized, by writing the results to VTK files for visualization with Paraview.
 
-    * Spatiotemporal profiles of hydrogen gas density (ρ_g) along the tank.
-    * Temporal evolution of the average hydrogen density in the solid (ρ_s).
+    * Spatiotemporal profiles of hydrogen gas density along the tank.
+    * Temporal evolution of the average hydrogen density in the solid.
     * Qualitative comparison of the absorption/desorption rate with Darzi et al.'s results based on parameters like temperature or pressure.
 
 * Ferrite.jl and DifferentialEquations.jl Tutorials:
@@ -162,39 +162,40 @@ The solution is then processed and visualized, by writing the results to VTK fil
         * [DifferentialEquations.jl Mathematical Specification of an ODE Problem](https://docs.sciml.ai/DiffEqDocs/stable/types/ode_types/#SciMLBase.ODEFunction)
 
 
-**2/ Laminar Flow Modeling of Hydrogen Gas Through the Reactor**
+## 2- Laminar Flow Modeling of Hydrogen Gas Through the Reactor
 
 * Physics of the Problem:
-    * We will model the flow of hydrogen gas through the porous bed. Initially, we will consider laminar flow. We aim to determine the gas velocity field (`v_g`) for use in the convection-diffusion-reaction model.
-    * Darzi et al. use a more comprehensive approach, including momentum conservation, which we will incorporate.
-   
-   * **Continuity Equation (Conservation of Mass):**
-       ```
-        div(u) = 0
-       ```
-       where `u(z)` is the unknown velocity. In 1D, this implies a spatially constant velocity.
 
-   * **Momentum Equation (Conservation of Momentum):**
-       ```
-       u(z) ∂u/∂z = 1/Re ∂^2u/∂z^2 + f(z)
-       ```
-       where:
-       * `u(z)` is the unknown velocity.
-       * `f(z)` is the pressure gradient.
-       * `Re > 0` is the Reynolds number.
-     
-    * **Energy Equation (Conservation of Energy):**
-        * From Darzi et al. (Equation 10):
-            ```
-            (ρC_p)_eff ∂T/∂t + (ε ρ_g C_{p,g} v_g ⋅ ∇) T = ∇ ⋅ (k_eff ∇T) - ṁ ((1-ε) ΔH + T (C_{p,g} - C_s))
-            ```
-            where:
-            * `T` is the temperature.
-            * `(ρC_p)_eff` is the effective volumetric heat capacity.
-            * `C_{p,g}` is the heat capacity of hydrogen gas.
-            * `ΔH` is the enthalpy of absorption/desorption.
-            * `C_s` is the heat capacity of the solid.
-            * `k_eff` is the effective thermal conductivity.
+We will model the flow of hydrogen gas through the porous bed. Initially, we will consider laminar flow. We aim to determine the gas velocity field (`u_x` and `u_z`) for use in the convection-diffusion-reaction model. We consider the following equations for laminar flow in 2D (x, z), assuming incompressible flow.
+
+         
+* **Continuity Equation (Conservation of Mass):**
+    ```
+    ∂ux/∂x + ∂uz/∂z = 0
+    ```
+
+* **Momentum Equation (Conservation of Momentum):**
+
+    * *x-momentum equation:*
+      ```
+      ρg ( ∂ux/∂t + ux ∂ux/∂x + uz ∂ux/∂z ) = -∂p/∂x + μ ( ∂²ux/∂x² + ∂²ux/∂z² ) - Sx
+      ```
+
+    * *z-momentum equation:*
+      ```
+      ρg ( ∂uz/∂t + ux ∂uz/∂x + uz ∂uz/∂z ) = -∂p/∂z + μ ( ∂²uz/∂x² + ∂²uz/∂z² ) - Sz
+      ```
+
+Where:
+* `ux` and `uz` are the unknown velocity components in the x and z directions, respectively.
+* `ρg` is the density of the gas phase.
+* `t` is time.
+* `x` and `z` are the spatial coordinates.
+* `p` is the pressure.
+* `μ` is the dynamic viscosity of the gas phase.
+* `Sx` and `Sz` representing the pressure loss in the bed due to viscous dissipation, `Si` in each direction is calculated by: `Si= ui(mu/K)`
+ `K` denotes the permeability of the porous bed, with `K = 10^{-9} \, m^2` and `μ = 8.4e-6` kg/(m s))
+   
 
 * Boundary and Initial Conditions (Adapted from Darzi et al.):
     * ...
