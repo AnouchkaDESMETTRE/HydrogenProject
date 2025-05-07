@@ -222,10 +222,19 @@ We will model the flow of hydrogen gas through the porous bed. Initially, we wil
               * Symmetry condition representing the axis of the original cylindrical geometry, enforcing no flow across and symmetric tangential velocity.  
 
 * Implementation in Julia:
-    * ...
+      * **Spatial Discretization (Finite Element Method - FEM)**
 
-* Time-Stepping:
-    * ...
+  1. *Mesh Generation:* To simulate transient laminar flow in a cylindrical tank with nozzle using [Ferrite.jl](https://ferrite-fem.github.io/Ferrite.jl/stable/) and [DifferentialEquations.jl](https://docs.sciml.ai/DiffEqDocs/stable/) (in similar project this will become cylindrical cavity with periodically oscillating lid (or cover)). The mesh required on input is generated using [GMSH.jl](https://github.com/JuliaFEM/Gmsh.jl). This code was modeled after the tutorial in Ferrite [Incompressible Navier-Stokes equations via DifferentialEquations.jl](https://ferrite-fem.github.io/Ferrite.jl/stable/tutorials/ns_vs_diffeq/). 
+
+<img src="./laminar_stokes_scheme.png" width=800 />
+
+
+  
+      * **Numerical Time Integration**
+
+
+
+
 
 * Expected Types of Results:
     * Pressure, velocity, and temperature fields.
