@@ -224,8 +224,8 @@ We will model the flow of hydrogen gas through the porous bed. Initially, we wil
 * Implementation in Julia:
       * **Spatial Discretization (Finite Element Method - FEM)**
 
-  1. *Mesh Generation:* To simulate transient laminar flow in a cylindrical tank with nozzle using [Ferrite.jl](https://ferrite-fem.github.io/Ferrite.jl/stable/) and [DifferentialEquations.jl](https://docs.sciml.ai/DiffEqDocs/stable/) (in similar project this will become cylindrical cavity with periodically oscillating lid (or cover)). The mesh required on input is generated using [GMSH.jl](https://github.com/JuliaFEM/Gmsh.jl). This code was modeled after the tutorial in Ferrite [Incompressible Navier-Stokes equations via DifferentialEquations.jl](https://ferrite-fem.github.io/Ferrite.jl/stable/tutorials/ns_vs_diffeq/). 
-
+  1. *Mesh Generation:* To simulate transient laminar flow in a cylindrical tank with nozzle (in similar project this will become cylindrical cavity with periodically oscillating lid (or cover)). The mesh required on input is generated using GMSH.
+ 
 <img src="./laminar_stokes_scheme.png" width=800 />
 
 
@@ -243,9 +243,12 @@ We will model the flow of hydrogen gas through the porous bed. Initially, we wil
     * Temperature distribution within the reactor.
 
 * Ferrite.jl and DifferentialEquations.jl Tutorials:
-    * ...
+    * [Ferrite.jl](https://ferrite-fem.github.io/Ferrite.jl/stable/)
+    * [DifferentialEquations.jl](https://docs.sciml.ai/DiffEqDocs/stable/)
+    * [GMSH.jl](https://github.com/JuliaFEM/Gmsh.jl)
+    * [Incompressible Navier-Stokes equations via DifferentialEquations.jl](https://ferrite-fem.github.io/Ferrite.jl/stable/tutorials/ns_vs_diffeq/). 
 
-**3/  Combination of the Two Models (Coupling)**
+## 3- Combination of the Two Models (Coupling)**
 
 * Coupling Approach:
     * We will explore coupling the convection-diffusion-reaction model with the flow and energy models.
