@@ -224,13 +224,39 @@ We will model the flow of hydrogen gas through the porous bed. Initially, we wil
 * Implementation in Julia:
       * **Spatial Discretization (Finite Element Method - FEM)**
 
-  1. *Mesh Generation:* To simulate transient laminar flow in a cylindrical tank with nozzle (in similar project this will become cylindrical cavity with periodically oscillating lid (or cover)). The mesh required on input is generated using GMSH.
+ 1. *Mesh Generation:* To simulate transient laminar flow in a cylindrical tank with nozzle (in similar project this will become cylindrical cavity with periodically oscillating lid (or cover)). The mesh required on input is generated using GMSH.
  
 <img src="./laminar_stokes_scheme.png" width=800 />
 
+ 2. *Definition of Finite Element Spaces:* Finite element spaces are defined for velocity (:v) and pressure (:p). For velocity, higher-order Lagrange elements (Lagrange{RefQuadrilateral, 2}()^dim) are used. For pressure, lower-order Lagrange elements (Lagrange{RefQuadrilateral, 1}()) are used. This means that for velocity (v), there are 9 x 2 = 18 degrees of freedom (`DofHandler`) per element (since it's a vector field in 2D), and for pressure (p), there are 4 DOFs per element.  The total is then 18 + 4 = 22 DOFs per element.
+For the numerical integration of weak forms of equations on each element, quadrature rules (QuadratureRule{RefQuadrilateral}(5)) are defined."
 
+ 3. *CellValues:* `CellValues` objects (`cellvalues_v` and `cellvalues_p`) are created for the velocity and pressure finite element spaces and the quadrature rule. These objects efficiently calculate basis function values and their gradients at quadrature points within each mesh cell.
   
-      * **Numerical Time Integration**
+  4. Express the bounndary conditions, consider firts the axis like a wall so no velocity and we implement a parabolic inflow profil for the first tests using  `ConstraintHandler` (`ch`) then the bc will be inplemented at the end with the time integration and the solving the function function ferrite_limiter!(u, _, p, t)
+   
+ 
+        5.  *Assemblage des matrices :* Le code assemble la matrice de masse globale (`M`), delaing only with v so we create a bloc Mvv, Mvp then Mpv and Mpp, only Mvv not egal to zero because of ....
+     Then matrix stifness (`K`), implement 3 block,              Block A: Viscous term + Porous media term (acting on velocity) then  Block Bᵀ: Pressure term (acting on momentum equation) and              Block B: Incompressibility term (acting on velocity equation), last block egal to zero because there are no direct pressure-pressure terms in the momentum equation, then Matrix allocation and assembly
+
+6. 
+
+    * **Intégration temporelle numérique**
+
+L'intégration temporelle numérique du système d'équations différentielles ordinaires (EDO) résultant de la discrétisation spatiale est réalisée à l'aide de la bibliothèque DifferentialEquations.jl. Les principales étapes sont les suivantes :
+
+        1.  *Définition de la fonction du côté droit (RHS) :* La fonction `navierstokes!` définit le système d'EDO. Elle prend comme entrée le vecteur des dérivées temporelles (`du`), le vecteur de la solution actuelle (`u`), les paramètres du problème (`p`) et le temps courant (`t`). Dans cette fonction, les dérivées temporelles sont calculées en fonction de la solution actuelle, des matrices spatiales (`K`) et des termes non linéaires.
+
+        2.  *Définition des conditions initiales :* Un vecteur `u0` est créé et initialisé avec les conditions initiales pour la vitesse et la pression sur l'ensemble du maillage à l'aide de la fonction `setup_initial_conditions!`.
+
+        3.  *Définition de l'intervalle de temps :* L'intervalle de temps de la simulation et le temps final (`t_end`) sont spécifiés.
+
+        4.  *Définition du problème d'EDO :* Un objet `ODEProblem` est créé en fournissant la fonction RHS (`navierstokes!`), les conditions initiales (`u0`), l'intervalle de temps `(0.0, t_end)` et les paramètres du problème (`p`).
+
+        5.  *Choix de l'intégrateur temporel :* Le code initialise un intégrateur à l'aide de la fonction `init` de DifferentialEquations.jl.
+
+        6.  *Résolution du problème :* La fonction `step!` est utilisée itérativement dans une boucle `while` pour effectuer l'intégration temporelle et obtenir la solution.
+ 
 
 
 
