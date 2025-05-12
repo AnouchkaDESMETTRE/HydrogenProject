@@ -226,19 +226,19 @@ We will model the flow of hydrogen gas through the porous bed. Initially, we wil
  
 <img src="./laminar_stokes_scheme.png" width=800 />
 
- 2. *Definition of Finite Element Spaces:* Finite element spaces are defined for velocity (:v) and pressure (:p). For velocity, higher-order Lagrange elements (Lagrange{RefQuadrilateral, 2}()^dim) are used. For pressure, lower-order Lagrange elements (Lagrange{RefQuadrilateral, 1}()) are used. This means that for velocity (v), there are 9 x 2 = 18 degrees of freedom (`DofHandler`) per element (since it's a vector field in 2D), and for pressure (p), there are 4 DOFs per element.  The total is then 18 + 4 = 22 DOFs per element.
-For the numerical integration of weak forms of equations on each element, quadrature rules (QuadratureRule{RefQuadrilateral}(5)) are defined."
+ 2. *Definition of Finite Element Spaces:* Finite element spaces are defined for velocity and pressure. For velocity, higher-order Lagrange elements `Lagrange{RefQuadrilateral, 2}()^dim` are used. For pressure, lower-order Lagrange elements `Lagrange{RefQuadrilateral, 1}()` are used. This means that for velocity, there are 9 x 2 = 18 degrees of freedom `DofHandler` per element (since it's a vector field in 2D), and for pressure (p), there are 4 DOFs per element.  The total is then 18 + 4 = 22 DOFs per element.
+For the numerical integration of weak forms of equations on each element, quadrature rules `QuadratureRule{RefQuadrilateral}(5)` are defined.
 
  3. *CellValues:* `CellValues` objects (`cellvalues_v` and `cellvalues_p`) are created for the velocity and pressure finite element spaces and the quadrature rule. These objects efficiently calculate basis function values and their gradients at quadrature points within each mesh cell.
   
  4. *Boundary conditions:* First, consider the axis as a wall, imposing a no-slip condition (zero velocity) using the ConstraintHandler `ch`. The boundary conditions are then enforced during time integration through the `ferrite_limiter!(u, _, p, t)` function.
    
- 5. *Matrix Assembly:* The code assembles the global mass matrix (M). Dealing only with v, we create blocks Mvv, Mvp, Mpv, and Mpp.
+ 5. *Matrix Assembly:* The code assembles the global mass matrix (M). Dealing only with v, we create 4 blocks `Mvv`, `Mvp`, `Mpv`, and `Mpp`.
 Then, the stiffness matrix (K) is assembled, implementing 3 blocks:
-* Block `A`: Viscous term + Porous media term (acting on velocity)
-* Block `Bᵀ`: Pressure term (acting on the momentum equation)
-* Block `B`: Incompressibility term (acting on the velocity equation)
-* The last block is zero because there are no direct pressure-pressure terms in the momentum equation.
+ * Block `A`: Viscous term + Porous media term (acting on velocity)
+ * Block `Bᵀ`: Pressure term (acting on the momentum equation)
+ * Block `B`: Incompressibility term (acting on the velocity equation)
+ * The last block is zero because there are no direct pressure-pressure terms in the momentum equation.
 Finally, the matrices are allocated and assembled.
 
    * **Numerical Time Integration**
@@ -247,17 +247,15 @@ Numerical time integration of the system of ordinary differential equations (ODE
 
  1. *Initial condition:* A vector `u0` is created and initialized with the initial conditions for velocity and pressure on the entire mesh using the function `setup_initial_conditions!` with `apply_analytical` used on v and p.
 
- 2. *Right hand side:* `RHSparams` struct: Defines the parameters needed for the Navier-Stokes right-hand side function, including matrices, constraint handlers, and cell values.  `ferrite_limiter!` applies boundary conditions at each time step. `navierstokes_rhs_element!` calculates the contribution of the convective term to the time derivative of velocity for a single element.  `navierstokes!` calculates the right-hand side of the ODE system, including linear and nonlinear terms, and applies boundary conditions.
+ 2. *Right hand side:* `RHSparams` struct Defines the parameters needed for the Navier-Stokes right-hand side function, including matrices, constraint handlers, and cell values.  `ferrite_limiter!` applies boundary conditions at each time step. `navierstokes_rhs_element!` calculates the contribution of the convective term to the time derivative of velocity for a single element.  `navierstokes!` calculates the right-hand side of the ODE system, including linear and nonlinear terms, and applies boundary conditions.
 `navierstokes_jac_element!` calculates the element-wise contribution to the Jacobian matrix, representing the variation of the nonlinear term. `navierstokes_jac!` assembles the global Jacobian matrix, including the linear part and the variation of the nonlinear term, and applies boundary conditions.
  
  3. *Time integration:* An `ODEProblem` is created using the `navierstokes!` function and its Jacobian. A `Rodas5P` time stepper is initialized with error tolerances. The time integration loop iterates through steps, saving VTK files at each step for visualization in ParaView.  A ParaView collection is used to group the VTK files.
 
 
 * Expected Types of Results:
-    * Pressure, velocity, and temperature fields.
-    * Flow rate as a function of pressure drop.
-    * Impact of porosity and permeability on flow and heat transfer.
-    * Temperature distribution within the reactor.
+    * Pressure and velocity fields.
+    * Impact of porosity and permeability on flow transfer.
 
 * Ferrite.jl and DifferentialEquations.jl Tutorials:
     * [Ferrite.jl](https://ferrite-fem.github.io/Ferrite.jl/stable/)
