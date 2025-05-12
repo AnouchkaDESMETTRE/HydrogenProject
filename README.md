@@ -219,7 +219,8 @@ We will model the flow of hydrogen gas through the porous bed. Initially, we wil
               * Symmetry condition representing the axis of the original cylindrical geometry, enforcing no flow across and symmetric tangential velocity.  
 
 * Implementation in Julia:
-      * **Spatial Discretization (Finite Element Method - FEM)**
+
+  * **Spatial Discretization (Finite Element Method - FEM)**
 
  1. *Mesh Generation:* To simulate transient laminar flow in a cylindrical tank with nozzle (in similar project this will become cylindrical cavity with periodically oscillating lid (or cover)). The mesh required on input is generated using GMSH.
  
