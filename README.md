@@ -200,17 +200,14 @@ We will model the flow of hydrogen gas through the porous bed. Initially, we wil
 * Boundary and Initial Conditions (Adapted from Darzi et al.):
     * Initial Conditions
          *  Initial Temperature `T(t=0)` and Initial Pressure are the same than in Section 1.
-         *  Initial Velocity :
-             * Absorption: Initial velocity `ux` and `uz` of the entire system  is set to 0 m/s.
 
     * Boundary Conditions
-         * Hydrogen Inlet (`z = -L_{in}`, `0 \leq x \leq R_{in}`):
+         * Inlet (`z = -L_{in}`, `0 \leq x \leq R_{in}`):
              * Pressure is defined as the supply pressure ($P_{in}$) - 10, 15, and 20 bar - for absorption or the discharge pressure ($P_{out}$) - 1.5, 1.75, and 2 bar - for desorption.
 
-         * No Hydrogen Flux/Adiabatic Boundaries:
-             * *Vertical Wall (`z = 0`, `R_{in} \leq x \leq R`)*
-                   * Hydrogen velocities are zero: `u_x = 0, u_z = 0`.
-                   * No-slip condition at a solid, impermeable wall.
+         * *Vertical Wall (`z = 0`, `R_{in} \leq x \leq R`)*
+             * Hydrogen velocities are zero: `u_x = 0, u_z = 0`.
+             * No-slip condition at a solid, impermeable wall.
          * *Horizontal Wall (`x = R_{in}`, `-L_{in} \leq z \leq 0` and `x = R`, `0 \leq z \leq L`):*
              * Hydrogen velocities are zero: `u_x = 0, u_z = 0`.
              * No-slip condition at solid, impermeable walls.
@@ -233,7 +230,7 @@ For the numerical integration of weak forms of equations on each element, quadra
 
  3. *CellValues:* `CellValues` objects (`cellvalues_v` and `cellvalues_p`) are created for the velocity and pressure finite element spaces and the quadrature rule. These objects efficiently calculate basis function values and their gradients at quadrature points within each mesh cell.
   
-  4. Express the bounndary conditions, consider firts the axis like a wall so no velocity and we implement a parabolic inflow profil for the first tests using  `ConstraintHandler` (`ch`) then the bc will be inplemented at the end with the time integration and the solving the function function ferrite_limiter!(u, _, p, t)
+  4. Express the bounndary conditions, consider firts the axis like a wall so no velocity using  `ConstraintHandler` (`ch`) then the bc will be inplemented at the end with the time integration and the solving the function function ferrite_limiter!(u, _, p, t)
    
  
         5.  *Assemblage des matrices :* Le code assemble la matrice de masse globale (`M`), delaing only with v so we create a bloc Mvv, Mvp then Mpv and Mpp, only Mvv not egal to zero because of ....
