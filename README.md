@@ -203,7 +203,8 @@ We will model the flow of hydrogen gas through the porous bed. Initially, we wil
 
     * Boundary Conditions
          * Inlet (`z = -L_{in}`, `0 \leq x \leq R_{in}`):
-             * Pressure is defined as the supply pressure ($P_{in}$) - 10, 15, and 20 bar - for absorption or the discharge pressure ($P_{out}$) - 1.5, 1.75, and 2 bar - for desorption.
+             * Here, a pressure boundary condition (as given in the Darzi thesis) is not sufficient on its own.
+Due to the incompressibility condition `∇⋅u=0`, the pressure and velocity fields are inherently coupled. Incompressibility constrains the flow, meaning the fluid volume cannot change. A pressure condition alone does not fully define the flow at a boundary. It dictates the force driving the flow, but not the flow motion itself. We therefore need a boundary condition that provides information about the kinematics of the flow, i.e., the fluid motion. As a result, no pressure conditions are applied to avoid over-stressing, which would cause the combination to malfunction and we choose to impose a parabolic inflow velocity profile.
 
          * *Vertical Wall (`z = 0`, `R_{in} \leq x \leq R`)*
              * Hydrogen velocities are zero: `u_x = 0, u_z = 0`.
