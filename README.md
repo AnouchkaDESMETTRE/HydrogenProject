@@ -207,13 +207,13 @@ We will model the flow of hydrogen gas through the porous bed. Initially, we wil
              * Here, a pressure boundary condition (as given in the Darzi thesis) is not sufficient on its own.
 Due to the incompressibility condition `∇⋅u=0`, the pressure and velocity fields are inherently coupled. Incompressibility constrains the flow, meaning the fluid volume cannot change. A pressure condition alone does not fully define the flow at a boundary. It dictates the force driving the flow, but not the flow motion itself. We therefore need a boundary condition that provides information about the kinematics of the flow, i.e., the fluid motion. As a result, no pressure conditions are applied to avoid over-stressing, which would cause the combination to malfunction and we choose to impose a parabolic inflow velocity profile.
 
-         * *Vertical Wall (`z = 0`, `R_{in} \leq x \leq R`)*
+         * *Vertical Walls (`z = 0`, `R_{in} \leq x \leq R`) and  (`z = L`, `0 \leq x \leq R`):*
              * Hydrogen velocities are zero: `u_x = 0, u_z = 0`.
              * No-slip condition at a solid, impermeable wall.
-         * *Horizontal Walls (`x = R_{in}`, `-L_{in} \leq z \leq 0` and `x = R`, `0 \leq z \leq L`) and  (`z = L`, `0 \leq x \leq R`):*
+             * Assuming no flow out of the defined domain at this boundary for this initial Navier-Stokes solve.
+         * *Horizontal Wall (`x = R_{in}`, `-L_{in} \leq z \leq 0` and `x = R`, `0 \leq z \leq L`)*
              * Hydrogen velocities are zero: `u_x = 0, u_z = 0`.
              * No-slip condition at solid, impermeable walls.
-             * Assuming no flow out of the defined domain at this boundary for this initial Navier-Stokes solve.
          * *Bottom (`x < 0`, `-L_{in} \leq z \leq L`)*
              * This study models the domain around the axis of symmetry (including x < 0) rather than just half (x ≥ 0).  Consequently, no explicit boundary conditions are needed on the axis (x = 0).  Symmetry is inherently enforced by modeling both sides of the axis, in conjunction with boundary conditions at the domain's other boundaries.
                
