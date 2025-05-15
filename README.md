@@ -200,7 +200,8 @@ We will model the flow of hydrogen gas through the porous bed. Initially, we wil
 * Boundary and Initial Conditions (Adapted from Darzi et al.):
     * Initial Conditions
          *  Initial Temperature `T(t=0)` and Initial Pressure are the same than in Section 1.
-
+         *  Initial Velocity `u(t=0)` equals to (0,0).
+           
     * Boundary Conditions
          * Inlet (`z = -L_{in}`, `0 \leq x \leq R_{in}`):
              * Here, a pressure boundary condition (as given in the Darzi thesis) is not sufficient on its own.
@@ -209,16 +210,13 @@ Due to the incompressibility condition `∇⋅u=0`, the pressure and velocity fi
          * *Vertical Wall (`z = 0`, `R_{in} \leq x \leq R`)*
              * Hydrogen velocities are zero: `u_x = 0, u_z = 0`.
              * No-slip condition at a solid, impermeable wall.
-         * *Horizontal Wall (`x = R_{in}`, `-L_{in} \leq z \leq 0` and `x = R`, `0 \leq z \leq L`):*
+         * *Horizontal Walls (`x = R_{in}`, `-L_{in} \leq z \leq 0` and `x = R`, `0 \leq z \leq L`) and  (`z = L`, `0 \leq x \leq R`):*
              * Hydrogen velocities are zero: `u_x = 0, u_z = 0`.
              * No-slip condition at solid, impermeable walls.
-         * *Outlet (`z = L`, `0 \leq x \leq R`):*
-              * Hydrogen velocities are zero: `u_x = 0, u_z = 0`.
-              * Assuming no flow out of the defined domain at this boundary for this initial Navier-Stokes solve.
-         * *Axis (`x = 0`, `-L_{in} \leq z \leq L`)*
-              * `u_x = 0`, `\frac{\partial u_z}{\partial x} = 0`.
-              * Symmetry condition representing the axis of the original cylindrical geometry, enforcing no flow across and symmetric tangential velocity.  
-
+             * Assuming no flow out of the defined domain at this boundary for this initial Navier-Stokes solve.
+         * *Bottom (`x < 0`, `-L_{in} \leq z \leq L`)*
+             * This study models the domain around the axis of symmetry (including x < 0) rather than just half (x ≥ 0).  Consequently, no explicit boundary conditions are needed on the axis (x = 0).  Symmetry is inherently enforced by modeling both sides of the axis, in conjunction with boundary conditions at the domain's other boundaries.
+               
 * Implementation in Julia:
 
   * **Spatial Discretization (Finite Element Method - FEM)**
@@ -232,7 +230,7 @@ For the numerical integration of weak forms of equations on each element, quadra
 
  3. *CellValues:* `CellValues` objects (`cellvalues_v` and `cellvalues_p`) are created for the velocity and pressure finite element spaces and the quadrature rule. These objects efficiently calculate basis function values and their gradients at quadrature points within each mesh cell.
   
- 4. *Boundary conditions:* First, consider the axis as a wall, imposing a no-slip condition (zero velocity) using the ConstraintHandler `ch`. The boundary conditions are then enforced during time integration through the `ferrite_limiter!(u, _, p, t)` function.
+ 4. *Boundary conditions:* The boundary conditions are then enforced during time integration through the `ferrite_limiter!(u, _, p, t)` function.
    
  5. *Matrix Assembly:* The code assembles the global mass matrix (M). Dealing only with v, we create 4 blocks `Mvv`, `Mvp`, `Mpv`, and `Mpp`.
 Then, the stiffness matrix (K) is assembled, implementing 3 blocks:
