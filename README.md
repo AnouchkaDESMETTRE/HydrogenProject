@@ -39,7 +39,6 @@
 * Rectangular Tank Mesh: [`tank_mesh.ipynb`](https://github.com/AnouchkaDESMETTRE/HydrogenProject/blob/main/tank_mesh.ipynb)
 * Rectangular Tank and Nozzle Mesh: [`tankAndNozzle.ipynb`](https://github.com/AnouchkaDESMETTRE/HydrogenProject/blob/main/tankAndNozzle.ipynb)
 ```
----
 
 This README documents our review of the article "Absorption and desorption of hydrogen in long metal hydride tank equipped with phase change material jacket" (Rabienataj Darzi et al., International Journal of Hydrogen Energy, April 2016) and outlines our project plan to model similar aspects of hydrogen storage.
 
