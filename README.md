@@ -1,6 +1,6 @@
 ## Notebooks by Topic
 
-### 1. Hydrogen Gas & Metal-Oxide Density Models
+#### Hydrogen Gas & Metal-Oxide Density Models
 
 * **Homogeneous Reactor Models (0D):**
     * Solid Density Absorption & Desorption Cases (analytical & numerical with `DifferentialEquations.jl`): [Section 2 of `HydrogenProject.ipynb`](https://github.com/AnouchkaDESMETTRE/HydrogenProject/blob/main/HydrogenProject.ipynb#section-2)
@@ -14,7 +14,7 @@
 * **2D Coupled Densities Models (Numerical using `Ferrite.jl`):**
     * Transient Absorption in Tank and Nozzle Geometry: [`ferrite_2d_hydrogen_reactor.ipynb`](https://github.com/AnouchkaDESMETTRE/HydrogenProject/blob/main/ferrite_2d_hydrogen_reactor.ipynb)
 
-### 2. Finite Element Method (FEM) & Boundary Condition Studies
+#### Finite Element Method (FEM) & Boundary Condition Studies
 
 * **FEM Fundamentals & Hand-Coded BCs:**
     * Hand-Coded Linear Dirichlet Boundary Condition (1D steady-state gas density absorption): [Section 1 of `Understanding_BC_FEM.ipynb`](http://localhost:8891/notebooks/Desktop/HydrogenProject/Understanding_BC_FEM.ipynb#section-1) *(Note: This link points to a local file)*
@@ -23,7 +23,7 @@
     * Linear Boundary Conditions (using `Ferrite.jl`'s Dirichlet, Mean Average Constraint, and Penalty Method): [Section 2 of `pressure-inlet-conditions.ipynb`](https://github.com/AnouchkaDESMETTRE/HydrogenProject/blob/main/pressure-inlet-conditions.ipynb#section-2)
     * Non-Linear Dirichlet Boundary Condition on Left Patch (using Transient Penalty Method with `DifferentialEquations.jl`): [Section 3 of `pressure-inlet-conditions.ipynb`](https://github.com/AnouchkaDESMETTRE/HydrogenProject/blob/main/pressure-inlet-conditions.ipynb#section-3)
 
-### 3. Navier-Stokes Equations Development
+#### Navier-Stokes Equations Development
 
 * **Previous Explorations & Challenges:**
     * 2D Channel Flow (Open/Closed): [Link TBD - Local `navier_stokes_2d_channel.ipynb`](http://localhost:8891/notebooks/Desktop/HydrogenProject/navier_stokes_2d_channel.ipynb) (Issue: Problems with pressure boundary conditions).
@@ -34,11 +34,11 @@
     * Steady-State Navier-Stokes Equations (In Progress): [Section 4.2 of `pressure-inlet-conditions.ipynb`](http://localhost:8891/notebooks/Desktop/HydrogenProject/pressure-inlet-conditions.ipynb#section-4-2) *(Note: This link points to a local file)*
     * Transient Navier-Stokes Equations (In Progress): [Section 4.3 of `pressure-inlet-conditions.ipynb`](http://localhost:8891/notebooks/Desktop/HydrogenProject/pressure-inlet-conditions.ipynb#section-4-3) *(Note: This link points to a local file)*
 
-### 4. Mesh Generation Notebooks
+#### Mesh Generation Notebooks
 
 * Rectangular Tank Mesh: [`tank_mesh.ipynb`](https://github.com/AnouchkaDESMETTRE/HydrogenProject/blob/main/tank_mesh.ipynb)
 * Rectangular Tank and Nozzle Mesh: [`tankAndNozzle.ipynb`](https://github.com/AnouchkaDESMETTRE/HydrogenProject/blob/main/tankAndNozzle.ipynb)
-```
+
 
 This README documents our review of the article "Absorption and desorption of hydrogen in long metal hydride tank equipped with phase change material jacket" (Rabienataj Darzi et al., International Journal of Hydrogen Energy, April 2016) and outlines our project plan to model similar aspects of hydrogen storage.
 
