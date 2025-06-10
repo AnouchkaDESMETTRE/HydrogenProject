@@ -1,12 +1,3 @@
-Here's a reformatted and improved "Global Overview" for your README.md file, aiming for clarity, conciseness, and professionalism.
-
----
-
-```markdown
-# Hydrogen Project: Numerical Simulations in Julia
-
-This repository contains a collection of Julia notebooks exploring numerical methods for hydrogen gas and metal-oxide interactions, with a strong focus on Finite Element Method (FEM) applications using `Ferrite.jl` and transient solvers with `DifferentialEquations.jl`. The project progresses from simpler 0D/1D models to complex 2D simulations, culminating in the development of a Navier-Stokes solver.
-
 ## Notebooks by Topic
 
 ### 1. Hydrogen Gas & Metal-Oxide Density Models
