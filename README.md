@@ -26,7 +26,7 @@
 #### Navier-Stokes Equations Development
 
 * **Previous Explorations & Challenges:**
-    * 2D Channel Flow (Open/Closed): [Link TBD - Local `navier_stokes_2d_channel.ipynb`](https://github.com/ziolai/finite_element_electrical_engineering/blob/main/project-based-assignment/metal-hydride-storage/notebooks/navier_stokes_2d_channel.ipynb)) (Issue: Problems with pressure boundary conditions).
+    * 2D Channel Flow (Open/Closed): (https://github.com/ziolai/finite_element_electrical_engineering/blob/main/project-based-assignment/metal-hydride-storage/notebooks/navier_stokes_2d_channel.ipynb)) (Issue: Problems with pressure boundary conditions).
     * 2D Tank & Nozzle (Parabolic Velocity Profile): [`ferrite-navierstokes.ipynb`](https://github.com/AnouchkaDESMETTRE/HydrogenProject/blob/main/ferrite-navierstokes.ipynb) (Issue: Pressure inlet not matching velocity, non-linear BC challenges).
 
 * **Current Development (2D Simple Rectangular Mesh):**
