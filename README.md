@@ -16,6 +16,9 @@
 
 #### Finite Element Method (FEM) & Boundary Condition Studies
 
+* **FEM with Ferrite**
+    * Assemble()! function : [Section 1 of `UnderstandingFEMwithFerrite.ipynb`](https://github.com/AnouchkaDESMETTRE/HydrogenProject/blob/main/UnderstandingFEMwithFerrite.ipynb)
+
 * **FEM Fundamentals & Hand-Coded BCs:**
     * Hand-Coded Linear Dirichlet Boundary Condition (1D steady-state gas density absorption): [Section 1 of `Understanding_BC_FEM.ipynb`](https://github.com/AnouchkaDESMETTRE/HydrogenProject/blob/main/Understanding_BC_FEM.ipynb)
 
