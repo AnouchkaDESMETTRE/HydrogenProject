@@ -39,7 +39,7 @@
     * 2D Tank & Nozzle (Parabolic Velocity Profile): [`ferrite-navierstokes.ipynb`](https://github.com/AnouchkaDESMETTRE/HydrogenProject/blob/main/ferrite-navierstokes.ipynb) (Issue: Pressure inlet not matching velocity, non-linear BC challenges).
 
 * **Current Development (2D Simple Rectangular Mesh):**
-    * Steady Stokes Equation (In Progress): [Section 4.1 of `pressure-inlet-conditions.ipynb`][(http://localhost:8891/notebooks/Desktop/HydrogenProject/pressure-inlet-conditions.ipynb#section-4-1)
+    * Steady Stokes Equation (In Progress): [Section 4.1 of `pressure-inlet-conditions.ipynb`](https://github.com/AnouchkaDESMETTRE/HydrogenProject/blob/main/pressure-inlet-conditions.ipynb)
     * Steady-State Navier-Stokes Equations (In Progress): [Section 4.2 of `pressure-inlet-conditions.ipynb`](https://github.com/AnouchkaDESMETTRE/HydrogenProject/blob/main/pressure-inlet-conditions.ipynb)
     * Transient Navier-Stokes Equations (In Progress): [Section 4.3 of `pressure-inlet-conditions.ipynb`](https://github.com/AnouchkaDESMETTRE/HydrogenProject/blob/main/pressure-inlet-conditions.ipynb) 
 
